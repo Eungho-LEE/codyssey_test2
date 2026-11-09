@@ -1,0 +1,40 @@
+E1-2 최종 원격 동기화 실습 결과
+확인일: 2026-11-09
+원격: https://github.com/Eungho-LEE/codyssey_test2.git
+
+실제 실행한 명령과 결과의 핵심 요약입니다. 개인 인증 정보는 포함하지 않았습니다.
+
+1. 기존 별도 복제 폴더 확인
+   폴더: ../quiz-game-clone
+   원래 clone 실습의 README 수정 커밋: f491336
+   작업 폴더가 깨끗하고 origin이 위 저장소임을 확인했습니다.
+
+2. 원래 작업 폴더에서 제출 자료를 commit, push
+   커밋: 61c4195e1098d51c2c2fe8b5cd88095ca7e6b51e
+   메시지: Docs: 과제 README와 줄별 코드 해설 및 검증 증거 정리
+   git push origin main
+   결과: aa1d93b..61c4195 main -> main
+
+3. 별도 복제 폴더에서 최신 이력 pull
+   git pull --ff-only origin main
+   결과: f491336..61c4195, Fast-forward
+
+4. 복제 폴더에서 README 문장 추가 후 commit, push
+   추가한 소제목: 최종 동기화 확인 (2026-11-09)
+   git add README.md
+   git commit -m "Docs: 복제 저장소에서 최종 제출 동기화 확인"
+   생성 커밋: 71d9e0848c51f34c98b355f6a2e4fa6041098cc5
+   git push origin main
+   결과: 61c4195..71d9e08 main -> main
+
+5. 원래 quiz-game 폴더에서 변경 pull
+   git pull --ff-only origin main
+   결과: 61c4195..71d9e08, Fast-forward
+   README에 추가한 소제목과 문장이 반영된 것을 확인했습니다.
+
+6. 두 폴더의 커밋 비교
+   quiz-game HEAD:       71d9e0848c51f34c98b355f6a2e4fa6041098cc5
+   quiz-game-clone HEAD: 71d9e0848c51f34c98b355f6a2e4fa6041098cc5
+   일치: 확인
+
+이 파일을 추가하는 후속 문서 커밋은 위 실습 확인 시점 이후의 정상적인 변경입니다.
