@@ -1,3 +1,13 @@
+import json
+from pathlib import Path
+
+
+
+
+STATE_PATH = Path(__file__).resolve().parent / "state.json"
+
+
+
 def read_number(prompt, minimum, maximum):
     while True:
         raw = input(prompt).strip()
@@ -49,10 +59,21 @@ class Quiz:
                 "choices": self.choices, "answer": self.answer}
 
 
+    @classmethod
+    def from_dict(cls, data):
+        if not isinstance(data, dict):
+            raise ValueError("퀴즈 항목은 객체여야 합니다.")
+        if not all(key in data for key in ("question", "choices", "answer")):
+            raise ValueError("퀴즈 필드가 누락됐습니다.")
+        return cls(data["question"], data["choices"], data["answer"])
+
+
 class QuizGame:
     def __init__(self):
         self.quizzes = self.make_default_quizzes()
         self.best_score = None
+        self.can_save = True
+        self.load()
 
 
     def make_default_quizzes(self):
@@ -83,6 +104,10 @@ class QuizGame:
         if self.best_score is None or correct > self.best_score:
             self.best_score = correct
             print("새로운 최고 기록입니다.")
+        if self.save():
+            print("점수를 저장했습니다.")
+        else:
+            print("점수 저장 실패: 메모리에만 남아 있습니다.")
 
 
     def add_quiz(self):
@@ -92,7 +117,10 @@ class QuizGame:
         quiz = Quiz(question, choices, answer)
         self.quizzes.append(quiz)
         print("퀴즈를 목록에 추가했습니다.")
-        print("9~10단계에서는 종료하면 추가한 퀴즈가 사라집니다.")
+        if self.save():
+            print("추가한 퀴즈를 파일에도 저장했습니다.")
+        else:
+            print("파일 저장 실패: 추가한 퀴즈는 메모리에만 있습니다.")
 
 
     def list_quizzes(self):
@@ -109,6 +137,46 @@ class QuizGame:
             print("아직 퀴즈를 풀지 않았습니다.")
         else:
             print(f"최고 정답 수: {self.best_score}개")
+
+
+    def save(self):
+        if not self.can_save:
+            print("원본 보호를 위해 저장을 보류했습니다.")
+            return False
+        payload = {"quizzes": [q.to_dict() for q in self.quizzes],
+                   "best_score": self.best_score}
+        temporary = STATE_PATH.with_suffix(".json.tmp")
+        try:
+            with temporary.open("w", encoding="utf-8") as file:
+                json.dump(payload, file, ensure_ascii=False, indent=2)
+            temporary.replace(STATE_PATH)
+        except OSError as error:
+            print(f"저장하지 못했습니다: {error}")
+            return False
+        return True
+
+
+    def parse_state(self, data):
+        if not isinstance(data, dict):
+            raise ValueError("전체 데이터는 객체여야 합니다.")
+        if not isinstance(data.get("quizzes"), list) or "best_score" not in data:
+            raise ValueError("quizzes 또는 best_score 구조가 잘못됐습니다.")
+        quizzes = [Quiz.from_dict(item) for item in data["quizzes"]]
+        score = data["best_score"]
+        if score is not None and (type(score) is not int or score < 0):
+            raise ValueError("최고 점수는 null 또는 0 이상 정수여야 합니다.")
+        return quizzes, score
+
+
+    def load(self):
+        try:
+            with STATE_PATH.open("r", encoding="utf-8") as file:
+                data = json.load(file)
+        except FileNotFoundError:
+            print("첫 실행: 기본 퀴즈를 사용합니다.")
+            return
+        self.quizzes, self.best_score = self.parse_state(data)
+        print("저장된 데이터를 불러왔습니다.")
 
     def run(self):
         while True:
@@ -132,6 +200,8 @@ class QuizGame:
 def main():
     game = QuizGame()
     game.run()
+    if game.save():
+        print("현재 데이터를 저장했습니다.")
 
 
 if __name__ == "__main__":
