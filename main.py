@@ -14,6 +14,14 @@ def read_number(prompt, minimum, maximum):
         print(f"{minimum}~{maximum} 범위로 입력하세요.")
 
 
+def read_nonempty(prompt):
+    while True:
+        value = input(prompt).strip()
+        if value:
+            return value
+        print("빈 내용은 등록할 수 없습니다.")
+
+
 class Quiz:
     def __init__(self, question, choices, answer):
         if not isinstance(question, str) or not question.strip():
@@ -73,6 +81,16 @@ class QuizGame:
                 print("오답입니다.")
         print(f"{len(self.quizzes)}문제 중 {correct}개 정답")
 
+
+    def add_quiz(self):
+        question = read_nonempty("문제: ")
+        choices = [read_nonempty(f"선택지 {i}: ") for i in range(1, 5)]
+        answer = read_number("정답 번호: ", 1, 4)
+        quiz = Quiz(question, choices, answer)
+        self.quizzes.append(quiz)
+        print("퀴즈를 목록에 추가했습니다.")
+        print("9~10단계에서는 종료하면 추가한 퀴즈가 사라집니다.")
+
     def run(self):
         while True:
             print("\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료")
@@ -82,6 +100,8 @@ class QuizGame:
                 return
             elif choice == 1:
                 self.play()
+            elif choice == 2:
+                self.add_quiz()
             else:
                 print("이 기능은 다음 단계에서 연결합니다.")
 
