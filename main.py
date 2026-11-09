@@ -3,6 +3,11 @@ from pathlib import Path
 
 
 
+import shutil
+from datetime import datetime
+
+
+
 
 STATE_PATH = Path(__file__).resolve().parent / "state.json"
 
@@ -172,10 +177,28 @@ class QuizGame:
         try:
             with STATE_PATH.open("r", encoding="utf-8") as file:
                 data = json.load(file)
+            quizzes, score = self.parse_state(data)
         except FileNotFoundError:
             print("첫 실행: 기본 퀴즈를 사용합니다.")
             return
-        self.quizzes, self.best_score = self.parse_state(data)
+        except (json.JSONDecodeError, UnicodeDecodeError, ValueError) as error:
+            print(f"상태 파일 손상: {error}")
+            backup = STATE_PATH.with_name(
+                "state.corrupt-" + datetime.now().strftime("%Y%m%d-%H%M%S-%f") + ".json"
+            )
+            try:
+                shutil.copy2(STATE_PATH, backup)
+                print(f"손상 원본 백업: {backup.name}")
+            except OSError as backup_error:
+                self.can_save = False
+                print(f"백업 실패: 원본을 덮어쓰지 않습니다. {backup_error}")
+            print("이번 실행은 기본 퀴즈로 복구합니다.")
+            return
+        except OSError as error:
+            self.can_save = False
+            print(f"읽기 실패: 기본 퀴즈를 사용하고 저장은 보류합니다. {error}")
+            return
+        self.quizzes, self.best_score = quizzes, score
         print("저장된 데이터를 불러왔습니다.")
 
     def run(self):
@@ -199,9 +222,15 @@ class QuizGame:
 
 def main():
     game = QuizGame()
-    game.run()
-    if game.save():
-        print("현재 데이터를 저장했습니다.")
+    try:
+        game.run()
+    except (KeyboardInterrupt, EOFError):
+        print("\n입력이 종료되어 게임을 마칩니다.")
+    finally:
+        if game.save():
+            print("현재 데이터를 저장했습니다.")
+        else:
+            print("저장 실패 또는 보류: 이번 변경이 파일에 남지 않았을 수 있습니다.")
 
 
 if __name__ == "__main__":
