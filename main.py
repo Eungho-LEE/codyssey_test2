@@ -1,14 +1,34 @@
+def read_number(prompt, minimum, maximum):
+    while True:
+        raw = input(prompt).strip()
+
+        if not raw:
+            print("빈 입력입니다. 숫자를 입력하세요.")
+            continue
+
+        try:
+            value = int(raw)
+        except ValueError:
+            print("정수를 입력하세요.")
+            continue
+
+        if minimum <= value <= maximum:
+            return value
+
+        print(f"{minimum}~{maximum} 범위로 입력하세요.")
+
+
 def main():
     while True:
-        print("1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료")
-        choice = input("선택: ").strip()
-        if choice == "5":
+        print("\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료")
+        choice = read_number("선택: ", 1, 5)
+
+        if choice == 5:
             print("종료합니다.")
             break
-        elif choice in ("1", "2", "3", "4"):
-            print("선택한 기능:", choice)
         else:
-            print("1~5 중 하나를 입력하세요.")
+            print("선택한 기능:", choice)
+
 
 if __name__ == "__main__":
     main()
