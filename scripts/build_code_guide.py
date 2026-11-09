@@ -261,6 +261,8 @@ page=f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
 copy_client=(ROOT/'scripts/code-copy-client.js').read_text(encoding='utf-8')
 copy_style='<style>.code-label{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.code-copy-actions{display:inline-flex;align-items:center;gap:10px}.code-copy-actions button{cursor:pointer;padding:6px 12px;font-size:13px}.code-copy-status{font-size:12px;color:#e0f1ff}@media print{.code-copy-actions{display:none}}</style>'
 page=page.replace('</head>',copy_style+'</head>').replace('</body>','<script id="code-copy-client">'+copy_client+'</script></body>')
+from code_guide_view import render
+page = render(text, rows, 'E1-2 · 퀴즈 게임', digest)
 output=ROOT/'docs/code/main_line_by_line.html'
 output.parent.mkdir(parents=True,exist_ok=True)
 output.write_text(page,encoding='utf-8')

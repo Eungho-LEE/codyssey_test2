@@ -5,7 +5,7 @@ Python·터미널·Git의 기본 개념을 터미널에서 풀어 보는 콘솔 
 - 미션: 컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기
 - 저장소: [Eungho-LEE/codyssey_test2](https://github.com/Eungho-LEE/codyssey_test2)
 - 검증일: 2026-11-09
-- 코드 해설: [현재 main.py 237줄의 줄별 설명 HTML](docs/code/main_line_by_line.html) — 파일을 내려받아 브라우저에서 열면 검색·함수별 이동·전체 코드 복사를 사용할 수 있습니다.
+- 코드 해설: [현재 main.py 237줄의 줄별 설명 HTML](docs/code/main_line_by_line.html) — 파일을 내려받아 브라우저에서 열면 VS Code 스타일 구문 색상과 코드 오른쪽의 줄별 설명, 검색·함수별 이동·전체 코드 복사를 사용할 수 있습니다.
 
 ## 1. 퀴즈 주제와 선정 이유
 
