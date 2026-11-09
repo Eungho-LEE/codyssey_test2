@@ -1,4 +1,3 @@
-
 def read_number(prompt, minimum, maximum):
     while True:
         raw = input(prompt).strip()
@@ -58,6 +57,22 @@ class QuizGame:
             Quiz("목록의 첫 항목 인덱스는?", ["0", "1", "2", "-2"], 1),
         ]
 
+
+    def play(self):
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다.")
+            return
+        correct = 0
+        for quiz in self.quizzes:
+            quiz.show()
+            selected = read_number("정답 번호: ", 1, 4)
+            if quiz.is_correct(selected):
+                correct += 1
+                print("정답입니다.")
+            else:
+                print("오답입니다.")
+        print(f"{len(self.quizzes)}문제 중 {correct}개 정답")
+
     def run(self):
         while True:
             print("\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료")
@@ -65,6 +80,8 @@ class QuizGame:
             if choice == 5:
                 print("종료합니다.")
                 return
+            elif choice == 1:
+                self.play()
             else:
                 print("이 기능은 다음 단계에서 연결합니다.")
 
