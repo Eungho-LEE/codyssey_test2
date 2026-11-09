@@ -1,3 +1,4 @@
+
 def read_number(prompt, minimum, maximum):
     while True:
         raw = input(prompt).strip()
@@ -41,15 +42,36 @@ class Quiz:
                 "choices": self.choices, "answer": self.answer}
 
 
+class QuizGame:
+    def __init__(self):
+        self.quizzes = self.make_default_quizzes()
+        self.best_score = None
+
+
+    def make_default_quizzes(self):
+        # 학습용 예시입니다. 본인이 정한 주제의 문제 5개 이상으로 바꾸세요.
+        return [
+            Quiz("Python 파일의 확장자는?", [".py", ".jpg", ".mp3", ".zip"], 1),
+            Quiz("빈 파일을 만드는 명령은?", ["mkdir", "touch", "cd", "pwd"], 2),
+            Quiz("현재 폴더를 보여 주는 명령은?", ["cp", "mv", "pwd", "rm"], 3),
+            Quiz("로컬 변경 이력을 저장하는 Git 명령은?", ["clone", "pull", "push", "commit"], 4),
+            Quiz("목록의 첫 항목 인덱스는?", ["0", "1", "2", "-2"], 1),
+        ]
+
+    def run(self):
+        while True:
+            print("\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료")
+            choice = read_number("선택: ", 1, 5)
+            if choice == 5:
+                print("종료합니다.")
+                return
+            else:
+                print("이 기능은 다음 단계에서 연결합니다.")
+
+
 def main():
-    while True:
-        print("\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료")
-        choice = read_number("선택: ", 1, 5)
-        if choice == 5:
-            print("종료합니다.")
-            break
-        else:
-            print("선택한 기능:", choice)
+    game = QuizGame()
+    game.run()
 
 
 if __name__ == "__main__":
