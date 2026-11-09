@@ -80,6 +80,9 @@ class QuizGame:
             else:
                 print("오답입니다.")
         print(f"{len(self.quizzes)}문제 중 {correct}개 정답")
+        if self.best_score is None or correct > self.best_score:
+            self.best_score = correct
+            print("새로운 최고 기록입니다.")
 
 
     def add_quiz(self):
@@ -100,6 +103,13 @@ class QuizGame:
         for number, quiz in enumerate(self.quizzes, start=1):
             print(f"{number}. {quiz.question}")
 
+
+    def show_score(self):
+        if self.best_score is None:
+            print("아직 퀴즈를 풀지 않았습니다.")
+        else:
+            print(f"최고 정답 수: {self.best_score}개")
+
     def run(self):
         while True:
             print("\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료")
@@ -113,6 +123,8 @@ class QuizGame:
                 self.add_quiz()
             elif choice == 3:
                 self.list_quizzes()
+            elif choice == 4:
+                self.show_score()
             else:
                 print("이 기능은 다음 단계에서 연결합니다.")
 
