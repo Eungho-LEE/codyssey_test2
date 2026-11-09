@@ -1,0 +1,22 @@
+*   aa1d93b (HEAD -> main, origin/main, origin/HEAD) Merge remote-tracking branch 'origin/main'
+|\  
+| * f491336 Docs: 복제 저장소에서 동기화 실습 기록 추가
+* | 6022ed1 Fix: 손상 데이터와 입력 중단 안전 종료 처리
+* | c36295b Feat: UTF-8 상태 저장과 데이터 복원 구현
+* | 14570b1 Feat: 최고 점수 갱신과 미플레이 상태 구분
+* | 4731ea8 Feat: 퀴즈 목록과 빈 목록 안내 구현
+* | 1602ba7 Feat: 퀴즈 추가와 입력 검증 구현
+* |   edae640 Merge: 퀴즈 플레이 기능 병합
+|\ \  
+| * | 12a3546 (feature/play) Feat: 퀴즈 출제와 정답 판정 구현
+|/ /  
+* | 3b5104c Feat: 주제별 기본 퀴즈와 게임 구조 추가
+* | 5c247c0 Feat: Quiz 속성과 출력 정답 판정 구현
+* | aa9df4c Feat: 숫자와 빈 입력 공통 검증 추가
+|/  
+* 8d5e122 Feat: 반복 메뉴와 종료 흐름 구현
+* ea3711f Learn: 변수와 자료형 입출력 연습
+*   02f15d6 Merge branch 'main' of https://github.com/Eungho-LEE/codyssey_test2
+|\  
+| * 4daa9bd Initial commit
+* 2e16958 Chore: 퀴즈 게임 저장소 초기 설정

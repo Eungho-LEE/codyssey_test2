@@ -1,0 +1,55 @@
+{
+  "quizzes": [
+    {
+      "question": "Python 파일의 확장자는?",
+      "choices": [
+        ".py",
+        ".jpg",
+        ".mp3",
+        ".zip"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "빈 파일을 만드는 명령은?",
+      "choices": [
+        "mkdir",
+        "touch",
+        "cd",
+        "pwd"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "현재 폴더를 보여 주는 명령은?",
+      "choices": [
+        "cp",
+        "mv",
+        "pwd",
+        "rm"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "로컬 변경 이력을 저장하는 Git 명령은?",
+      "choices": [
+        "clone",
+        "pull",
+        "push",
+        "commit"
+      ],
+      "answer": 4
+    },
+    {
+      "question": "목록의 첫 항목 인덱스는?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "-2"
+      ],
+      "answer": 1
+    }
+  ],
+  "best_score": null
+}

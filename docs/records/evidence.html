@@ -1,0 +1,443 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E1-2 실제 실행 검증 기록</title><style>*{box-sizing:border-box}html{background:#edf2f7;color:#24384c;font:15px/1.65 "Malgun Gothic",sans-serif}body{margin:0;padding:28px}main{max-width:1000px;padding:30px 38px;margin:auto;background:white;border:1px solid #ccd9e5;border-radius:12px}h1{font-size:26px;color:#153f68;margin:0 0 8px}h2{font-size:21px;margin:10px 0}h3{font-size:15px;color:#385a79}p{margin:10px 0}.intro{padding:14px;background:#f1f6fb;border-left:4px solid #4c89b8;font-size:13px}.toolbar{padding:16px 0;border-bottom:1px solid #d8e3ec}select{font:inherit;padding:8px;width:100%;max-width:650px;border:1px solid #a9bed2;border-radius:6px}.badge{font-size:12px;letter-spacing:.05em;color:#567994;margin-top:24px}.record{padding-top:5px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7f9fc;border:1px solid #d4e0eb;border-radius:7px;padding:18px;font:13px/1.6 Consolas,"Malgun Gothic",monospace}code{font-family:Consolas,monospace;font-size:13px;overflow-wrap:anywhere}.result{color:#17613f;font-weight:bold}.footer{border-top:1px solid #d1dde8;padding-top:18px;font-size:12px;color:#627b91;overflow-wrap:anywhere}[hidden]{display:none!important}@media(max-width:650px){body{padding:8px}main{padding:20px}}@media print{body{padding:0}.toolbar{display:none}}</style></head><body><main><h1>E1-2 실제 실행 검증 기록</h1><p>개발 기초 퀴즈 게임 · 2026-11-09 · 20 / 20 시나리오 통과</p><div class="intro">실제 WSL에서 main.py의 격리된 복사본을 실행해 수집한 기록입니다. 이 페이지는 기록을 읽기 위한 뷰어이며, 실행 중인 터미널을 흉내 낸 화면이 아닙니다. 기존 개인 진행 데이터는 변경하지 않았습니다.</div><div class="toolbar"><label for="record-select">확인할 기록</label><br><select id="record-select"><option value="environment">실제 WSL 실행 환경</option><option value="menu">메뉴와 정상 종료</option><option value="menu_validation">문자·빈 입력·범위·공백 메뉴</option><option value="unplayed">아직 플레이하지 않은 최고점</option><option value="add">퀴즈 등록 검증과 목록</option><option value="list">추가한 퀴즈 목록 확인</option><option value="play">전체 플레이·잘못된 정답 재입력·최고점</option><option value="score">저장한 최고 정답 수 확인</option><option value="restart">재시작 후 추가 문항·최고점 복원</option><option value="best_preserved">낮은 점수 이후 최고점 유지</option><option value="zero_score">첫 판 0점과 미플레이 구분</option><option value="empty">빈 문제 목록의 플레이·목록·점수</option><option value="corrupt_json">손상 데이터 복구: json</option><option value="corrupt_encoding">손상 데이터 복구: encoding</option><option value="corrupt_schema">손상 데이터 복구: schema</option><option value="read_error">읽기 실패 시 원본 보호·저장 보류</option><option value="write_error">쓰기 실패 안내</option><option value="sigint_menu">실제 SIGINT: menu</option><option value="sigint_play">실제 SIGINT: play</option><option value="sigint_add">실제 SIGINT: add</option><option value="eof">입력 스트림 EOF 안전 종료</option><option value="git">실제 Git 이력 그래프</option></select></div><section class="record" data-record="environment" hidden><p class="badge">실제 기록 · environment</p><h2>실제 WSL 실행 환경</h2><p><strong>실행 명령:</strong> <code>python3 --version / git --version / uname</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>입력 없음 / EOF</pre></details><h3>실제 표준 출력</h3><pre class="stdout">[실제 WSL 실행 환경]
+{
+  &quot;python&quot;: &quot;3.14.4&quot;,
+  &quot;python_executable&quot;: &quot;/usr/bin/python3&quot;,
+  &quot;platform&quot;: &quot;Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43&quot;,
+  &quot;git&quot;: &quot;git version 2.53.0&quot;,
+  &quot;system&quot;: &quot;Linux&quot;,
+  &quot;kernel&quot;: &quot;6.18.54.1-microsoft-standard-WSL2&quot;,
+  &quot;code_sha256&quot;: &quot;5cde90446ae5f37c4832d7947a64c1863ddc08fd262fef8e808e3c393989bc04&quot;,
+  &quot;distribution&quot;: &quot;Ubuntu 26.04.1 LTS&quot;
+}
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="menu" hidden><p class="badge">실제 기록 · menu</p><h2>메뉴와 정상 종료</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">첫 실행: 기본 퀴즈를 사용합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="menu_validation" hidden><p class="badge">실제 기록 · menu_validation</p><h2>문자·빈 입력·범위·공백 메뉴</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>abc
+
+9
+ 3 
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 정수를 입력하세요.
+선택: 빈 입력입니다. 숫자를 입력하세요.
+선택: 1~5 범위로 입력하세요.
+선택: 등록된 퀴즈: 5개
+1. Python 파일의 확장자는?
+2. 빈 파일을 만드는 명령은?
+3. 현재 폴더를 보여 주는 명령은?
+4. 로컬 변경 이력을 저장하는 Git 명령은?
+5. 목록의 첫 항목 인덱스는?
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="unplayed" hidden><p class="badge">실제 기록 · unplayed</p><h2>아직 플레이하지 않은 최고점</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>4
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 아직 퀴즈를 풀지 않았습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="add" hidden><p class="badge">실제 기록 · add</p><h2>퀴즈 등록 검증과 목록</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>2
+
+GitHub에 커밋을 올리는 명령은?
+
+push
+pull
+log
+status
+abc
+0
+5
+1
+3
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 문제: 빈 내용은 등록할 수 없습니다.
+문제: 선택지 1: 빈 내용은 등록할 수 없습니다.
+선택지 1: 선택지 2: 선택지 3: 선택지 4: 정답 번호: 정수를 입력하세요.
+정답 번호: 1~4 범위로 입력하세요.
+정답 번호: 1~4 범위로 입력하세요.
+정답 번호: 퀴즈를 목록에 추가했습니다.
+추가한 퀴즈를 파일에도 저장했습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 등록된 퀴즈: 6개
+1. Python 파일의 확장자는?
+2. 빈 파일을 만드는 명령은?
+3. 현재 폴더를 보여 주는 명령은?
+4. 로컬 변경 이력을 저장하는 Git 명령은?
+5. 목록의 첫 항목 인덱스는?
+6. GitHub에 커밋을 올리는 명령은?
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="list" hidden><p class="badge">실제 기록 · list</p><h2>추가한 퀴즈 목록 확인</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>3
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 등록된 퀴즈: 6개
+1. Python 파일의 확장자는?
+2. 빈 파일을 만드는 명령은?
+3. 현재 폴더를 보여 주는 명령은?
+4. 로컬 변경 이력을 저장하는 Git 명령은?
+5. 목록의 첫 항목 인덱스는?
+6. GitHub에 커밋을 올리는 명령은?
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="play" hidden><p class="badge">실제 기록 · play</p><h2>전체 플레이·잘못된 정답 재입력·최고점</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>1
+abc
+0
+5
+
+ 1 
+2
+3
+4
+1
+1
+4
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: Python 파일의 확장자는?
+1. .py
+2. .jpg
+3. .mp3
+4. .zip
+정답 번호: 정수를 입력하세요.
+정답 번호: 1~4 범위로 입력하세요.
+정답 번호: 1~4 범위로 입력하세요.
+정답 번호: 빈 입력입니다. 숫자를 입력하세요.
+정답 번호: 정답입니다.
+빈 파일을 만드는 명령은?
+1. mkdir
+2. touch
+3. cd
+4. pwd
+정답 번호: 정답입니다.
+현재 폴더를 보여 주는 명령은?
+1. cp
+2. mv
+3. pwd
+4. rm
+정답 번호: 정답입니다.
+로컬 변경 이력을 저장하는 Git 명령은?
+1. clone
+2. pull
+3. push
+4. commit
+정답 번호: 정답입니다.
+목록의 첫 항목 인덱스는?
+1. 0
+2. 1
+3. 2
+4. -2
+정답 번호: 정답입니다.
+GitHub에 커밋을 올리는 명령은?
+1. push
+2. pull
+3. log
+4. status
+정답 번호: 정답입니다.
+6문제 중 6개 정답
+새로운 최고 기록입니다.
+점수를 저장했습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 최고 정답 수: 6개
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="score" hidden><p class="badge">실제 기록 · score</p><h2>저장한 최고 정답 수 확인</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>4
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 최고 정답 수: 6개
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="restart" hidden><p class="badge">실제 기록 · restart</p><h2>재시작 후 추가 문항·최고점 복원</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>3
+4
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 등록된 퀴즈: 6개
+1. Python 파일의 확장자는?
+2. 빈 파일을 만드는 명령은?
+3. 현재 폴더를 보여 주는 명령은?
+4. 로컬 변경 이력을 저장하는 Git 명령은?
+5. 목록의 첫 항목 인덱스는?
+6. GitHub에 커밋을 올리는 명령은?
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 최고 정답 수: 6개
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="best_preserved" hidden><p class="badge">실제 기록 · best_preserved</p><h2>낮은 점수 이후 최고점 유지</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>1
+2
+1
+1
+1
+2
+2
+4
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: Python 파일의 확장자는?
+1. .py
+2. .jpg
+3. .mp3
+4. .zip
+정답 번호: 오답입니다.
+빈 파일을 만드는 명령은?
+1. mkdir
+2. touch
+3. cd
+4. pwd
+정답 번호: 오답입니다.
+현재 폴더를 보여 주는 명령은?
+1. cp
+2. mv
+3. pwd
+4. rm
+정답 번호: 오답입니다.
+로컬 변경 이력을 저장하는 Git 명령은?
+1. clone
+2. pull
+3. push
+4. commit
+정답 번호: 오답입니다.
+목록의 첫 항목 인덱스는?
+1. 0
+2. 1
+3. 2
+4. -2
+정답 번호: 오답입니다.
+GitHub에 커밋을 올리는 명령은?
+1. push
+2. pull
+3. log
+4. status
+정답 번호: 오답입니다.
+6문제 중 0개 정답
+점수를 저장했습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 최고 정답 수: 6개
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="zero_score" hidden><p class="badge">실제 기록 · zero_score</p><h2>첫 판 0점과 미플레이 구분</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>1
+2
+1
+1
+1
+2
+4
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">첫 실행: 기본 퀴즈를 사용합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: Python 파일의 확장자는?
+1. .py
+2. .jpg
+3. .mp3
+4. .zip
+정답 번호: 오답입니다.
+빈 파일을 만드는 명령은?
+1. mkdir
+2. touch
+3. cd
+4. pwd
+정답 번호: 오답입니다.
+현재 폴더를 보여 주는 명령은?
+1. cp
+2. mv
+3. pwd
+4. rm
+정답 번호: 오답입니다.
+로컬 변경 이력을 저장하는 Git 명령은?
+1. clone
+2. pull
+3. push
+4. commit
+정답 번호: 오답입니다.
+목록의 첫 항목 인덱스는?
+1. 0
+2. 1
+3. 2
+4. -2
+정답 번호: 오답입니다.
+5문제 중 0개 정답
+새로운 최고 기록입니다.
+점수를 저장했습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 최고 정답 수: 0개
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="empty" hidden><p class="badge">실제 기록 · empty</p><h2>빈 문제 목록의 플레이·목록·점수</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>1
+3
+4
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">저장된 데이터를 불러왔습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 등록된 퀴즈가 없습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 등록된 퀴즈가 없습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 아직 퀴즈를 풀지 않았습니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="corrupt_json" hidden><p class="badge">실제 기록 · corrupt_json</p><h2>손상 데이터 복구: json</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>3
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">상태 파일 손상: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+손상 원본 백업: state.corrupt-20261109-175041-416356.json
+이번 실행은 기본 퀴즈로 복구합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 등록된 퀴즈: 5개
+1. Python 파일의 확장자는?
+2. 빈 파일을 만드는 명령은?
+3. 현재 폴더를 보여 주는 명령은?
+4. 로컬 변경 이력을 저장하는 Git 명령은?
+5. 목록의 첫 항목 인덱스는?
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="corrupt_encoding" hidden><p class="badge">실제 기록 · corrupt_encoding</p><h2>손상 데이터 복구: encoding</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>3
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">상태 파일 손상: &#x27;utf-8&#x27; codec can&#x27;t decode byte 0xff in position 0: invalid start byte
+손상 원본 백업: state.corrupt-20261109-175041-437326.json
+이번 실행은 기본 퀴즈로 복구합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 등록된 퀴즈: 5개
+1. Python 파일의 확장자는?
+2. 빈 파일을 만드는 명령은?
+3. 현재 폴더를 보여 주는 명령은?
+4. 로컬 변경 이력을 저장하는 Git 명령은?
+5. 목록의 첫 항목 인덱스는?
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="corrupt_schema" hidden><p class="badge">실제 기록 · corrupt_schema</p><h2>손상 데이터 복구: schema</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>3
+5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">상태 파일 손상: 선택지는 4개여야 합니다.
+손상 원본 백업: state.corrupt-20261109-175041-459807.json
+이번 실행은 기본 퀴즈로 복구합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 등록된 퀴즈: 5개
+1. Python 파일의 확장자는?
+2. 빈 파일을 만드는 명령은?
+3. 현재 폴더를 보여 주는 명령은?
+4. 로컬 변경 이력을 저장하는 Git 명령은?
+5. 목록의 첫 항목 인덱스는?
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="read_error" hidden><p class="badge">실제 기록 · read_error</p><h2>읽기 실패 시 원본 보호·저장 보류</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">읽기 실패: 기본 퀴즈를 사용하고 저장은 보류합니다. [Errno 21] Is a directory: &#x27;/tmp/codyssey-e12-submit-d702zye9/read_error/state.json&#x27;
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+원본 보호를 위해 저장을 보류했습니다.
+저장 실패 또는 보류: 이번 변경이 파일에 남지 않았을 수 있습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="write_error" hidden><p class="badge">실제 기록 · write_error</p><h2>쓰기 실패 안내</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>5
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">첫 실행: 기본 퀴즈를 사용합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 종료합니다.
+저장하지 못했습니다: [Errno 21] Is a directory: &#x27;/tmp/codyssey-e12-submit-d702zye9/write_error/state.json.tmp&#x27;
+저장 실패 또는 보류: 이번 변경이 파일에 남지 않았을 수 있습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="sigint_menu" hidden><p class="badge">실제 기록 · sigint_menu</p><h2>실제 SIGINT: menu</h2><p><strong>실행 명령:</strong> <code>python3 main.py; then SIGINT at input wait</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>입력 없음 / EOF</pre></details><h3>실제 표준 출력</h3><pre class="stdout">첫 실행: 기본 퀴즈를 사용합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 
+입력이 종료되어 게임을 마칩니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="sigint_play" hidden><p class="badge">실제 기록 · sigint_play</p><h2>실제 SIGINT: play</h2><p><strong>실행 명령:</strong> <code>python3 main.py; then SIGINT at input wait</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>1
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">첫 실행: 기본 퀴즈를 사용합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: Python 파일의 확장자는?
+1. .py
+2. .jpg
+3. .mp3
+4. .zip
+정답 번호: 
+입력이 종료되어 게임을 마칩니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="sigint_add" hidden><p class="badge">실제 기록 · sigint_add</p><h2>실제 SIGINT: add</h2><p><strong>실행 명령:</strong> <code>python3 main.py; then SIGINT at input wait</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>2
+중단될 문제
+</pre></details><h3>실제 표준 출력</h3><pre class="stdout">첫 실행: 기본 퀴즈를 사용합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 문제: 선택지 1: 
+입력이 종료되어 게임을 마칩니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="eof" hidden><p class="badge">실제 기록 · eof</p><h2>입력 스트림 EOF 안전 종료</h2><p><strong>실행 명령:</strong> <code>python3 main.py</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>입력 없음 / EOF</pre></details><h3>실제 표준 출력</h3><pre class="stdout">첫 실행: 기본 퀴즈를 사용합니다.
+
+1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료
+선택: 
+입력이 종료되어 게임을 마칩니다.
+현재 데이터를 저장했습니다.
+</pre><p class="result">검증: PASS</p></section><section class="record" data-record="git" hidden><p class="badge">실제 기록 · git</p><h2>실제 Git 이력 그래프</h2><p><strong>실행 명령:</strong> <code>git --no-pager log --oneline --graph --decorate --all</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>입력 없음 / EOF</pre></details><h3>실제 표준 출력</h3><pre class="stdout">*   aa1d93b (HEAD -&gt; main, origin/main, origin/HEAD) Merge remote-tracking branch &#x27;origin/main&#x27;
+|\  
+| * f491336 Docs: 복제 저장소에서 동기화 실습 기록 추가
+* | 6022ed1 Fix: 손상 데이터와 입력 중단 안전 종료 처리
+* | c36295b Feat: UTF-8 상태 저장과 데이터 복원 구현
+* | 14570b1 Feat: 최고 점수 갱신과 미플레이 상태 구분
+* | 4731ea8 Feat: 퀴즈 목록과 빈 목록 안내 구현
+* | 1602ba7 Feat: 퀴즈 추가와 입력 검증 구현
+* |   edae640 Merge: 퀴즈 플레이 기능 병합
+|\ \  
+| * | 12a3546 (feature/play) Feat: 퀴즈 출제와 정답 판정 구현
+|/ /  
+* | 3b5104c Feat: 주제별 기본 퀴즈와 게임 구조 추가
+* | 5c247c0 Feat: Quiz 속성과 출력 정답 판정 구현
+* | aa9df4c Feat: 숫자와 빈 입력 공통 검증 추가
+|/  
+* 8d5e122 Feat: 반복 메뉴와 종료 흐름 구현
+* ea3711f Learn: 변수와 자료형 입출력 연습
+*   02f15d6 Merge branch &#x27;main&#x27; of https://github.com/Eungho-LEE/codyssey_test2
+|\  
+| * 4daa9bd Initial commit
+* 2e16958 Chore: 퀴즈 게임 저장소 초기 설정
+</pre><p class="result">검증: PASS</p></section><p class="footer">원본: docs/records/verification.json 및 각 .txt 파일<br>검증한 main.py SHA-256: 5cde90446ae5f37c4832d7947a64c1863ddc08fd262fef8e808e3c393989bc04<br>Ctrl+C 항목은 실제 SIGINT 신호를 사용했습니다. Git 그래프는 캡처 시점의 이력입니다.</p></main><script>const select=document.querySelector('#record-select');function show(){document.querySelectorAll('[data-record]').forEach(e=>e.hidden=e.dataset.record!==select.value);}const requested=new URL(location.href).searchParams.get('view');if(Array.from(select.options).some(o=>o.value===requested))select.value=requested;select.addEventListener('change',show);show();</script></body></html>

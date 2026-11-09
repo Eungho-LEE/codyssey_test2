@@ -1,0 +1,220 @@
+{
+  "date": "2026-11-09",
+  "environment": {
+    "python": "3.14.4",
+    "python_executable": "/usr/bin/python3",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "git": "git version 2.53.0",
+    "system": "Linux",
+    "kernel": "6.18.54.1-microsoft-standard-WSL2",
+    "code_sha256": "5cde90446ae5f37c4832d7947a64c1863ddc08fd262fef8e808e3c393989bc04",
+    "distribution": "Ubuntu 26.04.1 LTS"
+  },
+  "caseCount": 20,
+  "passCount": 20,
+  "cases": [
+    {
+      "id": "menu",
+      "title": "메뉴와 정상 종료",
+      "command": "python3 main.py",
+      "stdin": "5\n",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "menu_validation",
+      "title": "문자·빈 입력·범위·공백 메뉴",
+      "command": "python3 main.py",
+      "stdin": "abc\n\n9\n 3 \n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 정수를 입력하세요.\n선택: 빈 입력입니다. 숫자를 입력하세요.\n선택: 1~5 범위로 입력하세요.\n선택: 등록된 퀴즈: 5개\n1. Python 파일의 확장자는?\n2. 빈 파일을 만드는 명령은?\n3. 현재 폴더를 보여 주는 명령은?\n4. 로컬 변경 이력을 저장하는 Git 명령은?\n5. 목록의 첫 항목 인덱스는?\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "unplayed",
+      "title": "아직 플레이하지 않은 최고점",
+      "command": "python3 main.py",
+      "stdin": "4\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 아직 퀴즈를 풀지 않았습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "add",
+      "title": "퀴즈 등록 검증과 목록",
+      "command": "python3 main.py",
+      "stdin": "2\n\nGitHub에 커밋을 올리는 명령은?\n\npush\npull\nlog\nstatus\nabc\n0\n5\n1\n3\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 문제: 빈 내용은 등록할 수 없습니다.\n문제: 선택지 1: 빈 내용은 등록할 수 없습니다.\n선택지 1: 선택지 2: 선택지 3: 선택지 4: 정답 번호: 정수를 입력하세요.\n정답 번호: 1~4 범위로 입력하세요.\n정답 번호: 1~4 범위로 입력하세요.\n정답 번호: 퀴즈를 목록에 추가했습니다.\n추가한 퀴즈를 파일에도 저장했습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 등록된 퀴즈: 6개\n1. Python 파일의 확장자는?\n2. 빈 파일을 만드는 명령은?\n3. 현재 폴더를 보여 주는 명령은?\n4. 로컬 변경 이력을 저장하는 Git 명령은?\n5. 목록의 첫 항목 인덱스는?\n6. GitHub에 커밋을 올리는 명령은?\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "list",
+      "title": "추가한 퀴즈 목록 확인",
+      "command": "python3 main.py",
+      "stdin": "3\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 등록된 퀴즈: 6개\n1. Python 파일의 확장자는?\n2. 빈 파일을 만드는 명령은?\n3. 현재 폴더를 보여 주는 명령은?\n4. 로컬 변경 이력을 저장하는 Git 명령은?\n5. 목록의 첫 항목 인덱스는?\n6. GitHub에 커밋을 올리는 명령은?\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "play",
+      "title": "전체 플레이·잘못된 정답 재입력·최고점",
+      "command": "python3 main.py",
+      "stdin": "1\nabc\n0\n5\n\n 1 \n2\n3\n4\n1\n1\n4\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: Python 파일의 확장자는?\n1. .py\n2. .jpg\n3. .mp3\n4. .zip\n정답 번호: 정수를 입력하세요.\n정답 번호: 1~4 범위로 입력하세요.\n정답 번호: 1~4 범위로 입력하세요.\n정답 번호: 빈 입력입니다. 숫자를 입력하세요.\n정답 번호: 정답입니다.\n빈 파일을 만드는 명령은?\n1. mkdir\n2. touch\n3. cd\n4. pwd\n정답 번호: 정답입니다.\n현재 폴더를 보여 주는 명령은?\n1. cp\n2. mv\n3. pwd\n4. rm\n정답 번호: 정답입니다.\n로컬 변경 이력을 저장하는 Git 명령은?\n1. clone\n2. pull\n3. push\n4. commit\n정답 번호: 정답입니다.\n목록의 첫 항목 인덱스는?\n1. 0\n2. 1\n3. 2\n4. -2\n정답 번호: 정답입니다.\nGitHub에 커밋을 올리는 명령은?\n1. push\n2. pull\n3. log\n4. status\n정답 번호: 정답입니다.\n6문제 중 6개 정답\n새로운 최고 기록입니다.\n점수를 저장했습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 최고 정답 수: 6개\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "score",
+      "title": "저장한 최고 정답 수 확인",
+      "command": "python3 main.py",
+      "stdin": "4\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 최고 정답 수: 6개\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "restart",
+      "title": "재시작 후 추가 문항·최고점 복원",
+      "command": "python3 main.py",
+      "stdin": "3\n4\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 등록된 퀴즈: 6개\n1. Python 파일의 확장자는?\n2. 빈 파일을 만드는 명령은?\n3. 현재 폴더를 보여 주는 명령은?\n4. 로컬 변경 이력을 저장하는 Git 명령은?\n5. 목록의 첫 항목 인덱스는?\n6. GitHub에 커밋을 올리는 명령은?\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 최고 정답 수: 6개\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "best_preserved",
+      "title": "낮은 점수 이후 최고점 유지",
+      "command": "python3 main.py",
+      "stdin": "1\n2\n1\n1\n1\n2\n2\n4\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: Python 파일의 확장자는?\n1. .py\n2. .jpg\n3. .mp3\n4. .zip\n정답 번호: 오답입니다.\n빈 파일을 만드는 명령은?\n1. mkdir\n2. touch\n3. cd\n4. pwd\n정답 번호: 오답입니다.\n현재 폴더를 보여 주는 명령은?\n1. cp\n2. mv\n3. pwd\n4. rm\n정답 번호: 오답입니다.\n로컬 변경 이력을 저장하는 Git 명령은?\n1. clone\n2. pull\n3. push\n4. commit\n정답 번호: 오답입니다.\n목록의 첫 항목 인덱스는?\n1. 0\n2. 1\n3. 2\n4. -2\n정답 번호: 오답입니다.\nGitHub에 커밋을 올리는 명령은?\n1. push\n2. pull\n3. log\n4. status\n정답 번호: 오답입니다.\n6문제 중 0개 정답\n점수를 저장했습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 최고 정답 수: 6개\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "zero_score",
+      "title": "첫 판 0점과 미플레이 구분",
+      "command": "python3 main.py",
+      "stdin": "1\n2\n1\n1\n1\n2\n4\n5\n",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: Python 파일의 확장자는?\n1. .py\n2. .jpg\n3. .mp3\n4. .zip\n정답 번호: 오답입니다.\n빈 파일을 만드는 명령은?\n1. mkdir\n2. touch\n3. cd\n4. pwd\n정답 번호: 오답입니다.\n현재 폴더를 보여 주는 명령은?\n1. cp\n2. mv\n3. pwd\n4. rm\n정답 번호: 오답입니다.\n로컬 변경 이력을 저장하는 Git 명령은?\n1. clone\n2. pull\n3. push\n4. commit\n정답 번호: 오답입니다.\n목록의 첫 항목 인덱스는?\n1. 0\n2. 1\n3. 2\n4. -2\n정답 번호: 오답입니다.\n5문제 중 0개 정답\n새로운 최고 기록입니다.\n점수를 저장했습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 최고 정답 수: 0개\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "empty",
+      "title": "빈 문제 목록의 플레이·목록·점수",
+      "command": "python3 main.py",
+      "stdin": "1\n3\n4\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 등록된 퀴즈가 없습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 등록된 퀴즈가 없습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 아직 퀴즈를 풀지 않았습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "corrupt_json",
+      "title": "손상 데이터 복구: json",
+      "command": "python3 main.py",
+      "stdin": "3\n5\n",
+      "stdout": "상태 파일 손상: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)\n손상 원본 백업: state.corrupt-20261109-175041-416356.json\n이번 실행은 기본 퀴즈로 복구합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 등록된 퀴즈: 5개\n1. Python 파일의 확장자는?\n2. 빈 파일을 만드는 명령은?\n3. 현재 폴더를 보여 주는 명령은?\n4. 로컬 변경 이력을 저장하는 Git 명령은?\n5. 목록의 첫 항목 인덱스는?\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "corrupt_encoding",
+      "title": "손상 데이터 복구: encoding",
+      "command": "python3 main.py",
+      "stdin": "3\n5\n",
+      "stdout": "상태 파일 손상: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n손상 원본 백업: state.corrupt-20261109-175041-437326.json\n이번 실행은 기본 퀴즈로 복구합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 등록된 퀴즈: 5개\n1. Python 파일의 확장자는?\n2. 빈 파일을 만드는 명령은?\n3. 현재 폴더를 보여 주는 명령은?\n4. 로컬 변경 이력을 저장하는 Git 명령은?\n5. 목록의 첫 항목 인덱스는?\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "corrupt_schema",
+      "title": "손상 데이터 복구: schema",
+      "command": "python3 main.py",
+      "stdin": "3\n5\n",
+      "stdout": "상태 파일 손상: 선택지는 4개여야 합니다.\n손상 원본 백업: state.corrupt-20261109-175041-459807.json\n이번 실행은 기본 퀴즈로 복구합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 등록된 퀴즈: 5개\n1. Python 파일의 확장자는?\n2. 빈 파일을 만드는 명령은?\n3. 현재 폴더를 보여 주는 명령은?\n4. 로컬 변경 이력을 저장하는 Git 명령은?\n5. 목록의 첫 항목 인덱스는?\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "read_error",
+      "title": "읽기 실패 시 원본 보호·저장 보류",
+      "command": "python3 main.py",
+      "stdin": "5\n",
+      "stdout": "읽기 실패: 기본 퀴즈를 사용하고 저장은 보류합니다. [Errno 21] Is a directory: '/tmp/codyssey-e12-submit-d702zye9/read_error/state.json'\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n원본 보호를 위해 저장을 보류했습니다.\n저장 실패 또는 보류: 이번 변경이 파일에 남지 않았을 수 있습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "write_error",
+      "title": "쓰기 실패 안내",
+      "command": "python3 main.py",
+      "stdin": "5\n",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 종료합니다.\n저장하지 못했습니다: [Errno 21] Is a directory: '/tmp/codyssey-e12-submit-d702zye9/write_error/state.json.tmp'\n저장 실패 또는 보류: 이번 변경이 파일에 남지 않았을 수 있습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "sigint_menu",
+      "title": "실제 SIGINT: menu",
+      "command": "python3 main.py; then SIGINT at input wait",
+      "stdin": "",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: \n입력이 종료되어 게임을 마칩니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "sigint_play",
+      "title": "실제 SIGINT: play",
+      "command": "python3 main.py; then SIGINT at input wait",
+      "stdin": "1\n",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: Python 파일의 확장자는?\n1. .py\n2. .jpg\n3. .mp3\n4. .zip\n정답 번호: \n입력이 종료되어 게임을 마칩니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "sigint_add",
+      "title": "실제 SIGINT: add",
+      "command": "python3 main.py; then SIGINT at input wait",
+      "stdin": "2\n중단될 문제\n",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: 문제: 선택지 1: \n입력이 종료되어 게임을 마칩니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "id": "eof",
+      "title": "입력 스트림 EOF 안전 종료",
+      "command": "python3 main.py",
+      "stdin": "",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료\n선택: \n입력이 종료되어 게임을 마칩니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0,
+      "passed": true
+    }
+  ],
+  "originalMainUnchanged": true,
+  "originalStateUnchanged": true,
+  "method": "Actual WSL subprocess runs on isolated working copies; SIGINT cases send a real signal. Screenshots show these recorded outputs in a verification viewer."
+}

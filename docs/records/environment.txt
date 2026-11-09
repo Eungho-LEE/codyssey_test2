@@ -1,0 +1,11 @@
+[실제 WSL 실행 환경]
+{
+  "python": "3.14.4",
+  "python_executable": "/usr/bin/python3",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "git": "git version 2.53.0",
+  "system": "Linux",
+  "kernel": "6.18.54.1-microsoft-standard-WSL2",
+  "code_sha256": "5cde90446ae5f37c4832d7947a64c1863ddc08fd262fef8e808e3c393989bc04",
+  "distribution": "Ubuntu 26.04.1 LTS"
+}

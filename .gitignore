@@ -4,3 +4,6 @@ __pycache__/
 .env
 env/
 *.tmp
+state.json
+state.corrupt-*.json
+t --count HEAD

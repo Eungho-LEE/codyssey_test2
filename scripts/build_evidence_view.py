@@ -1,0 +1,19 @@
+"""Display actual CLI records; this is deliberately not a simulated terminal UI."""
+import html
+import json
+from pathlib import Path
+
+root=Path(__file__).resolve().parent.parent
+records=root/'docs/records'
+report=json.loads((records/'verification.json').read_text(encoding='utf-8'))
+items=[{'id':'environment','title':'실제 WSL 실행 환경','command':'python3 --version / git --version / uname','stdin':'','stdout':(records/'environment.txt').read_text(encoding='utf-8'),'passed':True}]
+items+=report['cases']
+items.append({'id':'git','title':'실제 Git 이력 그래프','command':'git --no-pager log --oneline --graph --decorate --all','stdin':'','stdout':(records/'git-log.txt').read_text(encoding='utf-8'),'passed':True})
+esc=html.escape
+options=''.join(f'<option value="{esc(item["id"])}">{esc(item["title"])}</option>' for item in items)
+panels=''.join(f'<section class="record" data-record="{esc(item["id"])}" hidden><p class="badge">실제 기록 · {esc(item["id"])}</p><h2>{esc(item["title"])}</h2><p><strong>실행 명령:</strong> <code>{esc(item["command"])}</code></p><details><summary>검증에 전달한 입력 보기</summary><pre>{esc(item.get("stdin","") or "입력 없음 / EOF")}</pre></details><h3>실제 표준 출력</h3><pre class="stdout">{esc(item["stdout"])}</pre><p class="result">검증: {"PASS" if item["passed"] else "FAIL"}</p></section>' for item in items)
+css='''*{box-sizing:border-box}html{background:#edf2f7;color:#24384c;font:15px/1.65 "Malgun Gothic",sans-serif}body{margin:0;padding:28px}main{max-width:1000px;padding:30px 38px;margin:auto;background:white;border:1px solid #ccd9e5;border-radius:12px}h1{font-size:26px;color:#153f68;margin:0 0 8px}h2{font-size:21px;margin:10px 0}h3{font-size:15px;color:#385a79}p{margin:10px 0}.intro{padding:14px;background:#f1f6fb;border-left:4px solid #4c89b8;font-size:13px}.toolbar{padding:16px 0;border-bottom:1px solid #d8e3ec}select{font:inherit;padding:8px;width:100%;max-width:650px;border:1px solid #a9bed2;border-radius:6px}.badge{font-size:12px;letter-spacing:.05em;color:#567994;margin-top:24px}.record{padding-top:5px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7f9fc;border:1px solid #d4e0eb;border-radius:7px;padding:18px;font:13px/1.6 Consolas,"Malgun Gothic",monospace}code{font-family:Consolas,monospace;font-size:13px;overflow-wrap:anywhere}.result{color:#17613f;font-weight:bold}.footer{border-top:1px solid #d1dde8;padding-top:18px;font-size:12px;color:#627b91;overflow-wrap:anywhere}[hidden]{display:none!important}@media(max-width:650px){body{padding:8px}main{padding:20px}}@media print{body{padding:0}.toolbar{display:none}}'''
+js='''const select=document.querySelector('#record-select');function show(){document.querySelectorAll('[data-record]').forEach(e=>e.hidden=e.dataset.record!==select.value);}const requested=new URL(location.href).searchParams.get('view');if(Array.from(select.options).some(o=>o.value===requested))select.value=requested;select.addEventListener('change',show);show();'''
+page=f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E1-2 실제 실행 검증 기록</title><style>{css}</style></head><body><main><h1>E1-2 실제 실행 검증 기록</h1><p>개발 기초 퀴즈 게임 · 2026-11-09 · {report['passCount']} / {report['caseCount']} 시나리오 통과</p><div class="intro">실제 WSL에서 main.py의 격리된 복사본을 실행해 수집한 기록입니다. 이 페이지는 기록을 읽기 위한 뷰어이며, 실행 중인 터미널을 흉내 낸 화면이 아닙니다. 기존 개인 진행 데이터는 변경하지 않았습니다.</div><div class="toolbar"><label for="record-select">확인할 기록</label><br><select id="record-select">{options}</select></div>{panels}<p class="footer">원본: docs/records/verification.json 및 각 .txt 파일<br>검증한 main.py SHA-256: {report['environment']['code_sha256']}<br>Ctrl+C 항목은 실제 SIGINT 신호를 사용했습니다. Git 그래프는 캡처 시점의 이력입니다.</p></main><script>{js}</script></body></html>'''
+(records/'evidence.html').write_text(page,encoding='utf-8')
+print('Evidence viewer created from actual WSL records.')
