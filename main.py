@@ -91,6 +91,15 @@ class QuizGame:
         print("퀴즈를 목록에 추가했습니다.")
         print("9~10단계에서는 종료하면 추가한 퀴즈가 사라집니다.")
 
+
+    def list_quizzes(self):
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다.")
+            return
+        print(f"등록된 퀴즈: {len(self.quizzes)}개")
+        for number, quiz in enumerate(self.quizzes, start=1):
+            print(f"{number}. {quiz.question}")
+
     def run(self):
         while True:
             print("\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료")
@@ -102,6 +111,8 @@ class QuizGame:
                 self.play()
             elif choice == 2:
                 self.add_quiz()
+            elif choice == 3:
+                self.list_quizzes()
             else:
                 print("이 기능은 다음 단계에서 연결합니다.")
 
