@@ -1,0 +1,261 @@
+{
+  "date": "2026-11-10",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "main_sha256": "2aa549e6181fc1c2bd35b725e6b496374848b8853f9748fb038863a3fb12daf7",
+  "passed": 38,
+  "checks": [
+    {
+      "name": "default hints",
+      "passed": true
+    },
+    {
+      "name": "hint round trip",
+      "passed": true
+    },
+    {
+      "name": "old state compatibility",
+      "passed": true
+    },
+    {
+      "name": "random.sample receives selected count",
+      "passed": true
+    },
+    {
+      "name": "source question order unchanged",
+      "passed": true
+    },
+    {
+      "name": "hint charged once per question",
+      "passed": true
+    },
+    {
+      "name": "history has time and question count",
+      "passed": true
+    },
+    {
+      "name": "history persists on restart",
+      "passed": true
+    },
+    {
+      "name": "zero-score game retained and best preserved",
+      "passed": true
+    },
+    {
+      "name": "interrupted game not recorded",
+      "passed": true
+    },
+    {
+      "name": "missing legacy hint has no penalty",
+      "passed": true
+    },
+    {
+      "name": "reject malformed history points",
+      "passed": true
+    },
+    {
+      "name": "reject malformed history question_count",
+      "passed": true
+    },
+    {
+      "name": "reject malformed history played_at",
+      "passed": true
+    },
+    {
+      "name": "delete zero cancels",
+      "passed": true
+    },
+    {
+      "name": "delete confirmation cancels",
+      "passed": true
+    },
+    {
+      "name": "delete persists",
+      "passed": true
+    },
+    {
+      "name": "failed save preserves file",
+      "passed": true
+    },
+    {
+      "name": "empty game safe",
+      "passed": true
+    },
+    {
+      "name": "random_subset",
+      "passed": true
+    },
+    {
+      "name": "real CLI subset preserves all stored questions",
+      "passed": true
+    },
+    {
+      "name": "play_hint_history",
+      "passed": true
+    },
+    {
+      "name": "restart",
+      "passed": true
+    },
+    {
+      "name": "add_delete",
+      "passed": true
+    },
+    {
+      "name": "menu_validation",
+      "passed": true
+    },
+    {
+      "name": "eof",
+      "passed": true
+    },
+    {
+      "name": "corrupt_json",
+      "passed": true
+    },
+    {
+      "name": "corrupt backup json",
+      "passed": true
+    },
+    {
+      "name": "corrupt_encoding",
+      "passed": true
+    },
+    {
+      "name": "corrupt backup encoding",
+      "passed": true
+    },
+    {
+      "name": "corrupt_schema",
+      "passed": true
+    },
+    {
+      "name": "corrupt backup schema",
+      "passed": true
+    },
+    {
+      "name": "read_error",
+      "passed": true
+    },
+    {
+      "name": "write_error",
+      "passed": true
+    },
+    {
+      "name": "SIGINT menu",
+      "passed": true
+    },
+    {
+      "name": "SIGINT play",
+      "passed": true
+    },
+    {
+      "name": "SIGINT add",
+      "passed": true
+    },
+    {
+      "name": "real user state unchanged",
+      "passed": true
+    }
+  ],
+  "sessions": [
+    {
+      "name": "random_subset",
+      "stdin": "1\n2\n1\n1\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 풀 문제 수: Random 0\n1. A\n2. B\n3. C\n4. D\n정답 번호(1~4), 힌트 h: 정답입니다.\nRandom 2\n1. A\n2. B\n3. C\n4. D\n정답 번호(1~4), 힌트 h: 정답입니다.\n2문제 중 2개 정답\n점수: 20점 / 힌트 사용: 0회\n새로운 최고 기록입니다.\n점수를 저장했습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "play_hint_history",
+      "stdin": "1\n0\n2\n1\nabc\n\n0\n5\nh\nh\n1\n7\n4\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 풀 문제 수: 1~1 범위로 입력하세요.\n풀 문제 수: 1~1 범위로 입력하세요.\n풀 문제 수: Question\n1. A\n2. B\n3. C\n4. D\n정답 번호(1~4), 힌트 h: 정수를 입력하세요.\n정답 번호(1~4), 힌트 h: 빈 입력입니다. 숫자를 입력하세요.\n정답 번호(1~4), 힌트 h: 1~4 범위로 입력하세요.\n정답 번호(1~4), 힌트 h: 1~4 범위로 입력하세요.\n정답 번호(1~4), 힌트 h: 힌트: A hint\n힌트 사용: 3점 차감(이 문제에서는 한 번만 적용).\n정답 번호(1~4), 힌트 h: 힌트: A hint\n정답 번호(1~4), 힌트 h: 정답입니다.\n1문제 중 1개 정답\n점수: 7점 / 힌트 사용: 1회\n새로운 최고 기록입니다.\n점수를 저장했습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 1. 2026-11-10T14:58:14.307574+09:00 / 1문제 / 정답 1개 / 7점 / 힌트 1회\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 최고 정답 수: 1개\n힌트 차감 후 최고 점수: 7점\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "restart",
+      "stdin": "7\n4\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 1. 2026-11-10T14:58:14.307574+09:00 / 1문제 / 정답 1개 / 7점 / 힌트 1회\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 최고 정답 수: 1개\n힌트 차감 후 최고 점수: 7점\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "add_delete",
+      "stdin": "2\nNew\nA\nB\nC\nD\n2\nNew hint\n6\n2\ny\n3\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 문제: 선택지 1: 선택지 2: 선택지 3: 선택지 4: 정답 번호: 힌트(없으면 Enter): 퀴즈를 목록에 추가했습니다.\n추가한 퀴즈를 파일에도 저장했습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 등록된 퀴즈: 2개\n1. Question\n2. New\n삭제할 문제 번호(0 취소): 정말 삭제할까요? (y/N): 삭제: New\n삭제한 결과를 파일에도 저장했습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 등록된 퀴즈: 1개\n1. Question\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "menu_validation",
+      "stdin": "abc\n\n8\n5\n",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 정수를 입력하세요.\n선택: 빈 입력입니다. 숫자를 입력하세요.\n선택: 1~7 범위로 입력하세요.\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "eof",
+      "stdin": "",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: \n입력이 종료되어 게임을 마칩니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "corrupt_json",
+      "stdin": "5\n",
+      "stdout": "상태 파일 손상: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)\n손상 원본 백업: state.corrupt-20261110-145814-432679.json\n이번 실행은 기본 퀴즈로 복구합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "corrupt_encoding",
+      "stdin": "5\n",
+      "stdout": "상태 파일 손상: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n손상 원본 백업: state.corrupt-20261110-145814-453530.json\n이번 실행은 기본 퀴즈로 복구합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "corrupt_schema",
+      "stdin": "5\n",
+      "stdout": "상태 파일 손상: quizzes 또는 best_score 구조가 잘못됐습니다.\n손상 원본 백업: state.corrupt-20261110-145814-475064.json\n이번 실행은 기본 퀴즈로 복구합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "read_error",
+      "stdin": "5\n",
+      "stdout": "읽기 실패: 기본 퀴즈를 사용하고 저장은 보류합니다. [Errno 21] Is a directory: '/tmp/quiz-bonus-h497kqqe/state.json'\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n원본 보호를 위해 저장을 보류했습니다.\n저장 실패 또는 보류: 이번 변경이 파일에 남지 않았을 수 있습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "write_error",
+      "stdin": "5\n",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 종료합니다.\n저장하지 못했습니다: [Errno 21] Is a directory: '/tmp/quiz-bonus-h497kqqe/state.json.tmp'\n저장 실패 또는 보류: 이번 변경이 파일에 남지 않았을 수 있습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "SIGINT menu",
+      "stdin": "[SIGINT]",
+      "stdout": "첫 실행: 기본 퀴즈를 사용합니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: \n입력이 종료되어 게임을 마칩니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "SIGINT play",
+      "stdin": "1\n1\n[SIGINT]",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 풀 문제 수: 로컬 변경 이력을 저장하는 Git 명령은?\n1. clone\n2. pull\n3. push\n4. commit\n정답 번호(1~4), 힌트 h: \n입력이 종료되어 게임을 마칩니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "name": "SIGINT add",
+      "stdin": "2\nPartial\n[SIGINT]",
+      "stdout": "저장된 데이터를 불러왔습니다.\n\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\n선택: 문제: 선택지 1: \n입력이 종료되어 게임을 마칩니다.\n현재 데이터를 저장했습니다.\n",
+      "stderr": "",
+      "returncode": 0
+    }
+  ]
+}
