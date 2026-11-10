@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-10",
+  "source": "main.py",
+  "sha256": "2aa549e6181fc1c2bd35b725e6b496374848b8853f9748fb038863a3fb12daf7",
+  "lineCount": 323,
+  "annotatedRows": 323,
+  "nonblankRows": 279,
+  "bonusRows": 98,
+  "includesBonus": true,
+  "sourceUnchanged": true,
+  "sourceCopyMatches": true,
+  "allLinesExplained": true,
+  "functionLinksValid": true,
+  "htmlAliasesMatch": true
+}

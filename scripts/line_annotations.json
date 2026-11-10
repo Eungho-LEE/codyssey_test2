@@ -1,0 +1,2915 @@
+{
+  "date": "2026-11-10",
+  "mission": "E1-2 · 퀴즈 게임",
+  "source": "main.py",
+  "sha256": "2aa549e6181fc1c2bd35b725e6b496374848b8853f9748fb038863a3fb12daf7",
+  "rows": [
+    {
+      "number": 1,
+      "code": "import json",
+      "meaning": "JSON 변환 기능을 가져옵니다.",
+      "detail": "json.load로 읽고 json.dump로 씁니다. 표준 라이브러리이므로 별도 설치가 필요 없습니다.",
+      "scope": "전역·구역 사이",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "code": "import random",
+      "meaning": "랜덤 문제 선택에 사용할 random 모듈을 가져옵니다.",
+      "detail": "표준 라이브러리입니다. play에서 random.sample을 사용해 원본 목록을 바꾸지 않고 중복 없는 부분 목록을 만듭니다.",
+      "scope": "전역·구역 사이",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 3,
+      "code": "from pathlib import Path",
+      "meaning": "경로를 다루는 Path 클래스를 가져옵니다.",
+      "detail": "from 모듈 import 이름 형식입니다. 이후 Path(...)처럼 직접 씁니다.",
+      "scope": "전역·구역 사이",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 7,
+      "code": "import shutil",
+      "meaning": "파일 복사 등의 shutil 모듈을 가져옵니다.",
+      "detail": "손상 파일 원본을 shutil.copy2로 백업합니다.",
+      "scope": "전역·구역 사이",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 8,
+      "code": "from datetime import datetime",
+      "meaning": "datetime 모듈에서 datetime 클래스를 가져옵니다.",
+      "detail": "현재 시각을 읽어 백업 파일 이름에 넣습니다.",
+      "scope": "전역·구역 사이",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 9,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 10,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 11,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 12,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 13,
+      "code": "STATE_PATH = Path(__file__).resolve().parent / \"state.json\"",
+      "meaning": "main.py와 같은 폴더의 state.json 경로를 정합니다.",
+      "detail": "__file__은 이 파일, resolve()는 절대 경로, parent는 상위 폴더, /는 경로 결합입니다. 현재 터미널 위치와 무관합니다.",
+      "scope": "전역·구역 사이",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 14,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 15,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 16,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 17,
+      "code": "def read_number(prompt, minimum, maximum):",
+      "meaning": "함수 정의 · 숫자 입력을 반복 검증",
+      "detail": "prompt는 안내 문구, minimum/maximum은 허용 범위입니다. 공백·빈 입력·숫자 변환·범위를 검사하고 정상 정수만 반환합니다. 매개변수: prompt, minimum, maximum. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 18,
+      "code": "    while True:",
+      "meaning": "정상 입력을 받을 때까지 반복합니다.",
+      "detail": "while True는 break·return·예외 등이 발생하기 전까지 반복합니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 19,
+      "code": "        raw = input(prompt).strip()",
+      "meaning": "안내 문구를 보여 주고 문자열 입력을 받은 뒤 앞뒤 공백을 없앱니다.",
+      "detail": "input 반환값은 숫자를 입력해도 str입니다. raw는 이 함수의 지역변수입니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 20,
+      "code": "        if not raw:",
+      "meaning": "공백 제거 후 빈 문자열인지 검사합니다.",
+      "detail": "빈 문자열은 False처럼 평가되므로 not raw가 True입니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 21,
+      "code": "            print(\"빈 입력입니다. 숫자를 입력하세요.\")",
+      "meaning": "빈 입력이라는 안내를 출력합니다.",
+      "detail": "화면에 알려 줄 뿐 값을 반환하는 동작은 아닙니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 22,
+      "code": "            continue",
+      "meaning": "현재 반복의 남은 부분을 건너뛰고 다시 입력받습니다.",
+      "detail": "함수 전체를 끝내는 return과 다릅니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 23,
+      "code": "        try:",
+      "meaning": "숫자 변환에서 발생할 예외를 처리할 구간을 시작합니다.",
+      "detail": "이 try는 바로 아래 int(raw)를 보호합니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 24,
+      "code": "            value = int(raw)",
+      "meaning": "입력 문자열을 정수로 바꿉니다.",
+      "detail": "\"2\"는 2가 되고 \"abc\"는 ValueError를 일으킵니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 25,
+      "code": "        except ValueError:",
+      "meaning": "정수 변환이 실패한 경우를 잡습니다.",
+      "detail": "모든 오류를 무시하지 않고 예상하는 ValueError를 지정했습니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 26,
+      "code": "            print(\"정수를 입력하세요.\")",
+      "meaning": "정수를 입력하라고 안내합니다.",
+      "detail": "abc 같은 입력에 대한 메시지입니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 27,
+      "code": "            continue",
+      "meaning": "같은 입력 반복으로 돌아갑니다.",
+      "detail": "아래 범위 검사로 내려가지 않습니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 28,
+      "code": "        if minimum <= value <= maximum:",
+      "meaning": "정수가 최소값 이상이고 최대값 이하인지 검사합니다.",
+      "detail": "minimum <= value <= maximum은 양쪽 경계를 포함한 비교입니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 29,
+      "code": "            return value",
+      "meaning": "검증된 정수를 호출한 곳에 돌려주고 함수를 끝냅니다.",
+      "detail": "메뉴에서는 choice, 정답 입력에서는 selected 등에 저장됩니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 30,
+      "code": "        print(f\"{minimum}~{maximum} 범위로 입력하세요.\")",
+      "meaning": "정수이지만 허용 범위를 벗어났다는 안내를 합니다.",
+      "detail": "이후 while 맨 위로 돌아가 다시 입력받습니다. f 문자열의 중괄호가 범위를 실제 숫자로 보여 줍니다.",
+      "scope": "read_number",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 31,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 32,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 33,
+      "code": "def read_nonempty(prompt):",
+      "meaning": "함수 정의 · 빈 문장이 아닌 입력 받기",
+      "detail": "문제와 선택지 입력에 재사용합니다. 공백만 입력하면 다시 받고, 정상 문자열을 return합니다. 매개변수: prompt. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "read_nonempty",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 34,
+      "code": "    while True:",
+      "meaning": "빈 내용이 아닌 문자열을 받을 때까지 반복합니다.",
+      "detail": "read_number와 달리 정수 변환은 하지 않습니다.",
+      "scope": "read_nonempty",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 35,
+      "code": "        value = input(prompt).strip()",
+      "meaning": "문자열을 입력받아 앞뒤 공백을 제거합니다.",
+      "detail": "공백만 입력했다면 value는 빈 문자열이 됩니다.",
+      "scope": "read_nonempty",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 36,
+      "code": "        if value:",
+      "meaning": "문자열에 내용이 있는지 검사합니다.",
+      "detail": "길이가 1 이상인 문자열은 True처럼 평가됩니다.",
+      "scope": "read_nonempty",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 37,
+      "code": "            return value",
+      "meaning": "정상 문자열을 반환하고 반복과 함수를 마칩니다.",
+      "detail": "문제·선택지 문장에 사용할 값입니다.",
+      "scope": "read_nonempty",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 38,
+      "code": "        print(\"빈 내용은 등록할 수 없습니다.\")",
+      "meaning": "빈 내용은 등록할 수 없다고 알립니다.",
+      "detail": "return을 하지 않았으므로 while이 다시 입력받습니다.",
+      "scope": "read_nonempty",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 39,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 40,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 41,
+      "code": "class Quiz:",
+      "meaning": "클래스 정의 · 문제 하나와 선택 힌트 관리",
+      "detail": "문제·선택지·정답·힌트를 보관하고 출력·판정·저장 변환을 담당합니다. 매개변수: 없음. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "Quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 42,
+      "code": "    def __init__(self, question, choices, answer, hint=\"\"):",
+      "meaning": "함수 정의 · 힌트를 포함한 문제 객체 생성",
+      "detail": "문제·선택지·정답 번호와 힌트의 타입을 검사합니다. hint의 기본값은 빈 문자열입니다. 매개변수: self, question, choices, answer, hint. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 43,
+      "code": "        if not isinstance(question, str) or not question.strip():",
+      "meaning": "문제가 문자열이 아니거나 공백뿐인지 검사합니다.",
+      "detail": "or는 둘 중 하나라도 참이면 참입니다. 문자열이 아니면 뒤 strip 호출을 생략합니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 44,
+      "code": "            raise ValueError(\"문제는 빈 문자열일 수 없습니다.\")",
+      "meaning": "잘못된 문제 문장이면 객체 생성을 중단합니다.",
+      "detail": "raise는 예외를 발생시킵니다. 호출한 쪽에서 처리할 수 있습니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 45,
+      "code": "        if not isinstance(choices, list) or len(choices) != 4:",
+      "meaning": "선택지가 list가 아니거나 개수가 4가 아닌지 검사합니다.",
+      "detail": "len은 길이를 구합니다. list가 아니면 뒤 len 검사까지 진행하지 않습니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 46,
+      "code": "            raise ValueError(\"선택지는 4개여야 합니다.\")",
+      "meaning": "선택지 개수·형식 오류를 알리는 예외를 발생시킵니다.",
+      "detail": "화면 print와 달리 현재 생성 과정을 중단합니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 47,
+      "code": "        if any(not isinstance(item, str) or not item.strip() for item in choices):",
+      "meaning": "선택지 중 문자열이 아니거나 빈 문장이 하나라도 있는지 검사합니다.",
+      "detail": "any는 조건에 맞는 항목이 하나라도 있으면 True입니다. for item in choices는 항목을 차례로 검사합니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 48,
+      "code": "            raise ValueError(\"선택지는 빈 문자열일 수 없습니다.\")",
+      "meaning": "잘못된 선택지 내용이면 예외를 발생시킵니다.",
+      "detail": "네 항목 모두 정상 문자열이어야 합니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 49,
+      "code": "        if type(answer) is not int or not 1 <= answer <= 4:",
+      "meaning": "정답이 정확한 int 타입이며 1~4 범위인지 검사합니다.",
+      "detail": "type(True)는 bool이므로 제외됩니다. isinstance(True,int)와 다른 점입니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 50,
+      "code": "            raise ValueError(\"정답은 1~4 정수여야 합니다.\")",
+      "meaning": "정답 번호가 잘못되면 예외를 발생시킵니다.",
+      "detail": "문자열 \"2\" 대신 정수 2를 받도록 통일합니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 51,
+      "code": "        if not isinstance(hint, str):",
+      "meaning": "힌트가 문자열인지 검사합니다. 빈 문자열은 허용하지만 숫자나 null은 허용하지 않습니다.",
+      "detail": "힌트가 문자열인지 검사합니다. 빈 문자열은 허용하지만 숫자나 null은 허용하지 않습니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 52,
+      "code": "            raise ValueError(\"힌트는 문자열이어야 합니다.\")",
+      "meaning": "잘못된 힌트 타입이면 객체 생성을 중단하고 ValueError를 알립니다.",
+      "detail": "잘못된 힌트 타입이면 객체 생성을 중단하고 ValueError를 알립니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 53,
+      "code": "        self.question = question.strip()",
+      "meaning": "검증한 문제 문장을 이 Quiz 객체에 저장합니다.",
+      "detail": "self는 지금 생성 중인 객체입니다. 다른 Quiz 객체의 문제와 구분됩니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 54,
+      "code": "        self.choices = [item.strip() for item in choices]",
+      "meaning": "각 선택지의 공백을 제거한 새 목록을 속성으로 저장합니다.",
+      "detail": "목록 내포입니다. 기존 choices를 그대로 참조하는 대신 새 list를 만듭니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 55,
+      "code": "        self.answer = answer",
+      "meaning": "정답 번호를 객체 속성에 저장합니다.",
+      "detail": "이후 is_correct에서 비교하는 기준입니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 56,
+      "code": "        self.hint = hint.strip()",
+      "meaning": "힌트 앞뒤 공백을 제거해 이 문제 객체의 hint 속성에 저장합니다.",
+      "detail": "힌트 앞뒤 공백을 제거해 이 문제 객체의 hint 속성에 저장합니다.",
+      "scope": "Quiz.__init__",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 57,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "Quiz",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 58,
+      "code": "    def show(self):",
+      "meaning": "함수 정의 · 문제와 선택지 출력",
+      "detail": "문제 문장과 1부터 시작하는 선택지 번호를 보여 줍니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "Quiz.show",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 59,
+      "code": "        print(self.question)",
+      "meaning": "이 객체의 문제 문장을 출력합니다.",
+      "detail": "self.question은 생성할 때 저장한 속성입니다.",
+      "scope": "Quiz.show",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 60,
+      "code": "        for number, text in enumerate(self.choices, start=1):",
+      "meaning": "선택지마다 1부터 시작하는 번호와 문장을 꺼냅니다.",
+      "detail": "enumerate(...,start=1)는 표시 번호를 만들며 list 인덱스 자체를 바꾸지는 않습니다.",
+      "scope": "Quiz.show",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 61,
+      "code": "            print(f\"{number}. {text}\")",
+      "meaning": "선택지 번호와 내용을 한 줄로 출력합니다.",
+      "detail": "f 문자열이 number와 text를 실제 값으로 바꿉니다.",
+      "scope": "Quiz.show",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 62,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "Quiz",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 63,
+      "code": "    def is_correct(self, selected):",
+      "meaning": "함수 정의 · 정답 비교",
+      "detail": "선택한 정수 번호와 저장된 정답 번호가 같은지 bool로 반환합니다. 매개변수: self, selected. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "Quiz.is_correct",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 64,
+      "code": "        return selected == self.answer",
+      "meaning": "입력 번호가 정답 번호와 같은지 bool로 반환합니다.",
+      "detail": "==는 비교이고 =는 대입입니다. 이 함수는 출력하지 않습니다.",
+      "scope": "Quiz.is_correct",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 65,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "Quiz",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 66,
+      "code": "    def to_dict(self):",
+      "meaning": "함수 정의 · JSON에 저장할 기본 자료형으로 변환",
+      "detail": "사용자 정의 Quiz 객체를 dict/list/문자열/정수로 바꿉니다. 이 메서드 자체는 파일을 쓰지 않습니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "Quiz.to_dict",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 67,
+      "code": "        return {\"question\": self.question,",
+      "meaning": "문제 데이터를 담은 dict를 만들어 반환하기 시작합니다.",
+      "detail": "여는 중괄호가 다음 줄에서 닫히므로 두 물리적 줄이 하나의 return 문입니다.",
+      "scope": "Quiz.to_dict",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 68,
+      "code": "                \"choices\": self.choices, \"answer\": self.answer, \"hint\": self.hint}",
+      "meaning": "선택지·정답 번호와 함께 힌트도 저장용 dict에 넣고 반환합니다.",
+      "detail": "선택지·정답 번호와 함께 힌트도 저장용 dict에 넣고 반환합니다.",
+      "scope": "Quiz.to_dict",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 69,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "Quiz",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 70,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "Quiz",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 71,
+      "code": "    @classmethod",
+      "meaning": "바로 아래 함수를 클래스 메서드로 선언합니다.",
+      "detail": "객체 대신 클래스를 cls로 받으므로 Quiz.from_dict(data) 형태로 호출할 수 있습니다.",
+      "scope": "Quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 72,
+      "code": "    def from_dict(cls, data):",
+      "meaning": "함수 정의 · 이전 저장 형식까지 호환해 문제 복원",
+      "detail": "필수 필드는 검사하고 hint가 없는 기존 문제는 빈 힌트로 복원합니다. 매개변수: cls, data. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "Quiz.from_dict",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 73,
+      "code": "        if not isinstance(data, dict):",
+      "meaning": "저장된 문제 항목이 dict인지 검사합니다.",
+      "detail": "JSON 객체는 json.load 후 Python dict가 됩니다.",
+      "scope": "Quiz.from_dict",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 74,
+      "code": "            raise ValueError(\"퀴즈 항목은 객체여야 합니다.\")",
+      "meaning": "문제 항목의 자료형이 틀리면 예외를 냅니다.",
+      "detail": "from_dict 호출자는 손상 데이터로 처리할 수 있습니다.",
+      "scope": "Quiz.from_dict",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 75,
+      "code": "        if not all(key in data for key in (\"question\", \"choices\", \"answer\")):",
+      "meaning": "question·choices·answer 세 키가 모두 존재하는지 검사합니다.",
+      "detail": "all은 모든 조건이 참이어야 True입니다. 키의 존재만 검사하고 값 검증은 생성자가 담당합니다.",
+      "scope": "Quiz.from_dict",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 76,
+      "code": "            raise ValueError(\"퀴즈 필드가 누락됐습니다.\")",
+      "meaning": "필수 키가 빠졌으면 예외를 발생시킵니다.",
+      "detail": "누락된 데이터를 억지로 채워 사용하지 않습니다.",
+      "scope": "Quiz.from_dict",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 77,
+      "code": "        return cls(data[\"question\"], data[\"choices\"], data[\"answer\"], data.get(\"hint\", \"\"))",
+      "meaning": "저장된 dict에서 새 Quiz 객체를 만듭니다.",
+      "detail": "data.get('hint', '')는 예전 파일에 hint가 없을 때 빈 문자열을 사용합니다. cls는 호출된 클래스를 뜻하며 생성자의 검증을 다시 적용합니다.",
+      "scope": "Quiz.from_dict",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 78,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 79,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 80,
+      "code": "class QuizGame:",
+      "meaning": "클래스 정의 · 게임 전체 상태와 기능",
+      "detail": "문제 목록·최고 정답 수·저장 가능 상태를 관리하고 메뉴와 파일 입출력을 연결합니다. 매개변수: 없음. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 81,
+      "code": "    def __init__(self):",
+      "meaning": "함수 정의 · 문제·점수·기록 초기화 후 파일 로드",
+      "detail": "기본 문제, 미플레이 최고점, 빈 게임 기록과 저장 허용 상태를 만들고 저장 파일을 읽습니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 82,
+      "code": "        self.quizzes = self.make_default_quizzes()",
+      "meaning": "기본 문제 목록을 새로 만들어 게임 속성에 보관합니다.",
+      "detail": "아래 make_default_quizzes 메서드를 실제로 호출합니다.",
+      "scope": "QuizGame.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 83,
+      "code": "        self.best_score = None",
+      "meaning": "아직 판을 마친 적 없음을 None으로 표시합니다.",
+      "detail": "0개 정답과 미플레이를 구분하기 위한 값입니다.",
+      "scope": "QuizGame.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 84,
+      "code": "        self.history = []",
+      "meaning": "이번 객체의 게임 기록을 빈 목록으로 초기화합니다. 아래 load에서 저장된 기록이 있으면 대체합니다.",
+      "detail": "이번 객체의 게임 기록을 빈 목록으로 초기화합니다. 아래 load에서 저장된 기록이 있으면 대체합니다.",
+      "scope": "QuizGame.__init__",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 85,
+      "code": "        self.can_save = True",
+      "meaning": "일단 상태 저장을 허용합니다.",
+      "detail": "load에서 읽기·백업에 문제가 있으면 False로 바뀝니다.",
+      "scope": "QuizGame.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 86,
+      "code": "        self.load()",
+      "meaning": "이전에 저장한 상태가 있으면 읽어 적용합니다.",
+      "detail": "함수 정의만이 아니라 실제 메서드 호출입니다. 기본 상태 준비 뒤에 실행됩니다.",
+      "scope": "QuizGame.__init__",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 87,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 88,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 89,
+      "code": "    def make_default_quizzes(self):",
+      "meaning": "함수 정의 · 힌트가 있는 개발 기초 문제 5개 준비",
+      "detail": "기본 문제마다 정답을 생각하는 데 도움이 되는 힌트를 함께 지정합니다. 기존 state.json 문제를 자동으로 교체하지는 않습니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 90,
+      "code": "        # 학습용 예시입니다. 본인이 정한 주제의 문제 5개 이상으로 바꾸세요.",
+      "meaning": "기본 문제는 학습 예시라는 주석입니다.",
+      "detail": "주석은 실행되지 않습니다. 현재 주제는 개발 기초이며 문항은 프로젝트 목적에 맞게 검토합니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 91,
+      "code": "        return [",
+      "meaning": "다섯 Quiz 객체를 담을 새 list를 반환하기 시작합니다.",
+      "detail": "여는 대괄호와 92행의 닫는 대괄호 사이가 한 목록입니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 92,
+      "code": "            Quiz(\"Python 파일의 확장자는?\", [\".py\", \".jpg\", \".mp3\", \".zip\"], 1, \"언어 이름의 앞 두 글자입니다.\"),",
+      "meaning": "Python 확장자 문제를 만들고 정답 번호 1과 힌트 문장을 지정합니다.",
+      "detail": "Python 확장자 문제를 만들고 정답 번호 1과 힌트 문장을 지정합니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 93,
+      "code": "            Quiz(\"빈 파일을 만드는 명령은?\", [\"mkdir\", \"touch\", \"cd\", \"pwd\"], 2, \"파일의 수정 시각을 바꾸는 명령입니다.\"),",
+      "meaning": "빈 파일 생성 명령 문제에 정답 번호 2와 touch를 떠올리는 힌트를 지정합니다.",
+      "detail": "빈 파일 생성 명령 문제에 정답 번호 2와 touch를 떠올리는 힌트를 지정합니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 94,
+      "code": "            Quiz(\"현재 폴더를 보여 주는 명령은?\", [\"cp\", \"mv\", \"pwd\", \"rm\"], 3, \"print working directory의 약자입니다.\"),",
+      "meaning": "현재 폴더 확인 문제에 정답 번호 3과 pwd의 약자를 설명하는 힌트를 지정합니다.",
+      "detail": "현재 폴더 확인 문제에 정답 번호 3과 pwd의 약자를 설명하는 힌트를 지정합니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 95,
+      "code": "            Quiz(\"로컬 변경 이력을 저장하는 Git 명령은?\", [\"clone\", \"pull\", \"push\", \"commit\"], 4, \"원격 전송 전에 로컬에 이력을 확정합니다.\"),",
+      "meaning": "로컬 Git 이력 저장 문제에 정답 번호 4와 commit의 역할을 설명하는 힌트를 지정합니다.",
+      "detail": "로컬 Git 이력 저장 문제에 정답 번호 4와 commit의 역할을 설명하는 힌트를 지정합니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 96,
+      "code": "            Quiz(\"목록의 첫 항목 인덱스는?\", [\"0\", \"1\", \"2\", \"-2\"], 1, \"Python의 인덱스는 영부터 시작합니다.\"),",
+      "meaning": "첫 인덱스 문제에 정답 번호 1과 0부터 시작한다는 힌트를 지정합니다.",
+      "detail": "첫 인덱스 문제에 정답 번호 1과 0부터 시작한다는 힌트를 지정합니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 97,
+      "code": "        ]",
+      "meaning": "기본 문제 목록을 닫아 반환합니다.",
+      "detail": "각 항목은 dict가 아니라 Quiz 인스턴스입니다.",
+      "scope": "QuizGame.make_default_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 98,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 99,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 100,
+      "code": "    def play(self):",
+      "meaning": "함수 정의 · 문제 수 선택·랜덤 출제·힌트·점수·기록",
+      "detail": "중복 없이 선택한 문제를 풀고 정답당 10점에서 힌트당 3점을 차감합니다. 완료한 판만 시각·문제 수·점수와 함께 저장합니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 101,
+      "code": "        if not self.quizzes:",
+      "meaning": "출제할 문제가 없는지 검사합니다.",
+      "detail": "빈 list는 False처럼 평가됩니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 102,
+      "code": "            print(\"등록된 퀴즈가 없습니다.\")",
+      "meaning": "문제가 없음을 알립니다.",
+      "detail": "빈 목록에서 플레이를 시도할 때 나옵니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 103,
+      "code": "            return",
+      "meaning": "play 메서드를 끝내 메뉴로 돌아갑니다.",
+      "detail": "프로그램 전체 종료가 아닙니다. 값을 쓰지 않은 return의 반환값은 None입니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 104,
+      "code": "        correct = 0",
+      "meaning": "이번 판의 정답 수를 0으로 시작합니다.",
+      "detail": "지역변수라 판을 시작할 때마다 새로 계산합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 105,
+      "code": "        count = read_number(\"풀 문제 수: \", 1, len(self.quizzes))",
+      "meaning": "이번에 풀 문제 수를 1부터 등록된 문제 개수 사이의 정수로 입력받습니다.",
+      "detail": "이번에 풀 문제 수를 1부터 등록된 문제 개수 사이의 정수로 입력받습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 106,
+      "code": "        questions = random.sample(self.quizzes, count)",
+      "meaning": "원본에서 count개를 중복 없이 랜덤하게 뽑아 출제 순서를 만듭니다.",
+      "detail": "sample은 새 목록을 반환하므로 self.quizzes의 저장 순서는 유지됩니다. 무작위이므로 이전 판과 같은 순서가 다시 나올 수도 있습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 107,
+      "code": "        hints_used = 0",
+      "meaning": "이번 판에서 처음으로 힌트를 사용한 문제 수를 0으로 시작합니다.",
+      "detail": "이번 판에서 처음으로 힌트를 사용한 문제 수를 0으로 시작합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 108,
+      "code": "        for quiz in questions:",
+      "meaning": "등록된 전체 목록이 아니라 이번에 랜덤 선택한 questions를 순서대로 풉니다.",
+      "detail": "등록된 전체 목록이 아니라 이번에 랜덤 선택한 questions를 순서대로 풉니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 109,
+      "code": "            quiz.show()",
+      "meaning": "현재 문제의 출력 메서드를 호출합니다.",
+      "detail": "Quiz.show가 문제와 선택지를 출력합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 110,
+      "code": "            hinted = False",
+      "meaning": "이 문제에서 힌트 차감이 적용됐는지 기억하는 플래그를 False로 시작합니다.",
+      "detail": "이 문제에서 힌트 차감이 적용됐는지 기억하는 플래그를 False로 시작합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 111,
+      "code": "            while True:",
+      "meaning": "정상 정답 번호가 입력될 때까지 같은 문제의 입력을 반복합니다.",
+      "detail": "정상 정답 번호가 입력될 때까지 같은 문제의 입력을 반복합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 112,
+      "code": "                raw = input(\"정답 번호(1~4), 힌트 h: \").strip().lower()",
+      "meaning": "정답 또는 h를 문자열로 받고 공백 제거와 소문자 변환을 합니다. H도 h로 처리됩니다.",
+      "detail": "정답 또는 h를 문자열로 받고 공백 제거와 소문자 변환을 합니다. H도 h로 처리됩니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 113,
+      "code": "                if raw == \"h\":",
+      "meaning": "입력한 값이 힌트 요청 h인지 확인합니다.",
+      "detail": "입력한 값이 힌트 요청 h인지 확인합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 114,
+      "code": "                    if not quiz.hint:",
+      "meaning": "힌트가 비어 있는지 검사합니다. 예전 저장 파일의 문제는 힌트가 없을 수 있습니다.",
+      "detail": "힌트가 비어 있는지 검사합니다. 예전 저장 파일의 문제는 힌트가 없을 수 있습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 115,
+      "code": "                        print(\"등록된 힌트가 없습니다. 점수는 차감하지 않습니다.\")",
+      "meaning": "사용 가능한 힌트가 없음을 알립니다. 사용 횟수를 올리지 않아 점수도 차감하지 않습니다.",
+      "detail": "사용 가능한 힌트가 없음을 알립니다. 사용 횟수를 올리지 않아 점수도 차감하지 않습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 116,
+      "code": "                    else:",
+      "meaning": "문제에 힌트가 등록되어 있는 경우를 처리합니다.",
+      "detail": "문제에 힌트가 등록되어 있는 경우를 처리합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 117,
+      "code": "                        print(\"힌트:\", quiz.hint)",
+      "meaning": "현재 문제의 힌트 문장을 출력합니다.",
+      "detail": "현재 문제의 힌트 문장을 출력합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 118,
+      "code": "                        if not hinted:",
+      "meaning": "이 문제에서 아직 힌트 차감을 적용하지 않았는지 검사합니다.",
+      "detail": "이 문제에서 아직 힌트 차감을 적용하지 않았는지 검사합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 119,
+      "code": "                            hints_used += 1",
+      "meaning": "차감 대상 힌트 사용 문제 수를 1 올립니다. 점수는 판이 끝난 뒤 이 횟수로 계산합니다.",
+      "detail": "차감 대상 힌트 사용 문제 수를 1 올립니다. 점수는 판이 끝난 뒤 이 횟수로 계산합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 120,
+      "code": "                            hinted = True",
+      "meaning": "이미 차감한 문제임을 표시해 같은 문제에서 h를 반복해도 추가 차감하지 않습니다.",
+      "detail": "이미 차감한 문제임을 표시해 같은 문제에서 h를 반복해도 추가 차감하지 않습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 121,
+      "code": "                            print(\"힌트 사용: 3점 차감(이 문제에서는 한 번만 적용).\")",
+      "meaning": "최초 힌트 사용에 3점 차감이 적용된다는 정책을 안내합니다.",
+      "detail": "최초 힌트 사용에 3점 차감이 적용된다는 정책을 안내합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 122,
+      "code": "                    continue",
+      "meaning": "힌트 조회 후 정답을 받도록 안쪽 while의 다음 반복으로 이동합니다.",
+      "detail": "힌트 조회 후 정답을 받도록 안쪽 while의 다음 반복으로 이동합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 123,
+      "code": "                if not raw:",
+      "meaning": "공백 제거 후 입력이 빈 문자열인지 확인합니다.",
+      "detail": "공백 제거 후 입력이 빈 문자열인지 확인합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 124,
+      "code": "                    print(\"빈 입력입니다. 숫자를 입력하세요.\")",
+      "meaning": "빈 입력에는 숫자가 필요하다는 안내를 출력합니다.",
+      "detail": "빈 입력에는 숫자가 필요하다는 안내를 출력합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 125,
+      "code": "                    continue",
+      "meaning": "빈 정답을 처리하지 않고 같은 문제의 입력을 다시 받습니다.",
+      "detail": "빈 정답을 처리하지 않고 같은 문제의 입력을 다시 받습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 126,
+      "code": "                try:",
+      "meaning": "정답 문자열의 정수 변환 오류를 처리할 구간을 시작합니다.",
+      "detail": "정답 문자열의 정수 변환 오류를 처리할 구간을 시작합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 127,
+      "code": "                    selected = int(raw)",
+      "meaning": "h가 아닌 입력을 정수 정답 번호로 변환합니다.",
+      "detail": "h가 아닌 입력을 정수 정답 번호로 변환합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 128,
+      "code": "                except ValueError:",
+      "meaning": "abc처럼 정수로 바꿀 수 없는 값의 ValueError를 처리합니다.",
+      "detail": "abc처럼 정수로 바꿀 수 없는 값의 ValueError를 처리합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 129,
+      "code": "                    print(\"정수를 입력하세요.\")",
+      "meaning": "정수 정답 번호가 필요하다는 안내를 출력합니다.",
+      "detail": "정수 정답 번호가 필요하다는 안내를 출력합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 130,
+      "code": "                    continue",
+      "meaning": "숫자 변환에 실패했으므로 같은 문제 입력으로 돌아갑니다.",
+      "detail": "숫자 변환에 실패했으므로 같은 문제 입력으로 돌아갑니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 131,
+      "code": "                if 1 <= selected <= 4:",
+      "meaning": "정답 번호가 선택지 범위 1~4 안에 있는지 검사합니다.",
+      "detail": "정답 번호가 선택지 범위 1~4 안에 있는지 검사합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 132,
+      "code": "                    break",
+      "meaning": "정상 번호이면 안쪽 입력 반복만 끝냅니다.",
+      "detail": "바깥 questions 반복을 종료하는 것은 아닙니다. 아래 is_correct로 채점한 뒤 다음 문제로 넘어갑니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 133,
+      "code": "                print(\"1~4 범위로 입력하세요.\")",
+      "meaning": "정수지만 1~4 밖이면 범위를 안내하고 입력 반복을 계속합니다.",
+      "detail": "정수지만 1~4 밖이면 범위를 안내하고 입력 반복을 계속합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 134,
+      "code": "            if quiz.is_correct(selected):",
+      "meaning": "현재 입력이 정답인지 검사합니다.",
+      "detail": "Quiz.is_correct의 True/False 반환값으로 분기합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 135,
+      "code": "                correct += 1",
+      "meaning": "정답일 때 이번 판 정답 수에 1을 더합니다.",
+      "detail": "correct += 1은 correct = correct + 1입니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 136,
+      "code": "                print(\"정답입니다.\")",
+      "meaning": "정답이라고 안내합니다.",
+      "detail": "정답인 경우에만 실행됩니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 137,
+      "code": "            else:",
+      "meaning": "정답이 아닌 경우의 갈래입니다.",
+      "detail": "바로 위 if quiz.is_correct(...)와 짝입니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 138,
+      "code": "                print(\"오답입니다.\")",
+      "meaning": "오답이라고 안내합니다.",
+      "detail": "이후 반복이 다음 문제를 출제합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 139,
+      "code": "        points = max(0, correct * 10 - hints_used * 3)",
+      "meaning": "이번 판 점수를 정답 수×10에서 힌트 수×3을 빼 계산합니다.",
+      "detail": "max(0, ...)로 최소 0점을 보장합니다. 힌트를 본 뒤 오답이어도 사용 횟수에 포함됩니다. best_score의 단위인 정답 개수와는 별도 값입니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 140,
+      "code": "        print(f\"{count}문제 중 {correct}개 정답\")",
+      "meaning": "이번에 선택한 문제 수와 맞힌 개수를 출력합니다.",
+      "detail": "이번에 선택한 문제 수와 맞힌 개수를 출력합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 141,
+      "code": "        print(f\"점수: {points}점 / 힌트 사용: {hints_used}회\")",
+      "meaning": "힌트 차감 후 점수와 차감 대상 힌트 사용 문제 수를 출력합니다.",
+      "detail": "힌트 차감 후 점수와 차감 대상 힌트 사용 문제 수를 출력합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 142,
+      "code": "        if self.best_score is None or correct > self.best_score:",
+      "meaning": "첫 완료 판이거나 기존 최고점보다 높은지 검사합니다.",
+      "detail": "None이면 or 뒤 비교를 생략해 정수와 None을 비교하는 오류를 피합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 143,
+      "code": "            self.best_score = correct",
+      "meaning": "최고 정답 수를 이번 판의 값으로 바꿉니다.",
+      "detail": "더 낮은 점수나 동점이면 이 줄이 실행되지 않습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 144,
+      "code": "            print(\"새로운 최고 기록입니다.\")",
+      "meaning": "최고 기록을 갱신했다고 안내합니다.",
+      "detail": "조건에 맞을 때만 출력합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 145,
+      "code": "        self.history.append({\"played_at\": datetime.now().astimezone().isoformat(),",
+      "meaning": "완료한 판의 시각을 기록하며 history에 새 dict를 추가하기 시작합니다.",
+      "detail": "현재 로컬 시각에 UTC 오프셋을 붙여 ISO 문자열로 만듭니다. 도중 EOF·Ctrl+C가 나면 이 줄에 도달하지 않으므로 미완료 판은 기록되지 않습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 146,
+      "code": "                             \"question_count\": count, \"correct\": correct,",
+      "meaning": "해당 게임 기록에 푼 문제 수와 정답 개수를 저장합니다.",
+      "detail": "해당 게임 기록에 푼 문제 수와 정답 개수를 저장합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 147,
+      "code": "                             \"points\": points, \"hints_used\": hints_used})",
+      "meaning": "차감 후 점수와 힌트 사용 수까지 넣어 게임 기록 하나를 완성합니다.",
+      "detail": "차감 후 점수와 힌트 사용 수까지 넣어 게임 기록 하나를 완성합니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 148,
+      "code": "        if self.save():",
+      "meaning": "현재 문제·점수를 파일에 저장하고 성공 여부를 검사합니다.",
+      "detail": "새 최고점이 아니어도 저장을 시도합니다. if 안에 함수를 호출하면 호출부터 실행됩니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 149,
+      "code": "            print(\"점수를 저장했습니다.\")",
+      "meaning": "파일 저장이 성공했다는 안내입니다.",
+      "detail": "save가 True를 반환했을 때 실행됩니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 150,
+      "code": "        else:",
+      "meaning": "저장이 실패하거나 보류된 경우입니다.",
+      "detail": "바로 위 if self.save()의 반대 갈래입니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 151,
+      "code": "            print(\"점수 저장 실패: 메모리에만 남아 있습니다.\")",
+      "meaning": "이번 점수가 메모리에만 남았을 수 있다고 알립니다.",
+      "detail": "프로그램 종료 후 유지된다고 거짓 안내하지 않습니다.",
+      "scope": "QuizGame.play",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 152,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 153,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 154,
+      "code": "    def add_quiz(self):",
+      "meaning": "함수 정의 · 문제와 선택 힌트 등록",
+      "detail": "문제·선택지·정답을 검증하고 힌트를 선택 입력받은 뒤 저장합니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 155,
+      "code": "        question = read_nonempty(\"문제: \")",
+      "meaning": "새 문제 문장을 빈 값이 아니게 입력받습니다.",
+      "detail": "아직 객체나 목록을 수정하지 않고 지역변수에만 저장합니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 156,
+      "code": "        choices = [read_nonempty(f\"선택지 {i}: \") for i in range(1, 5)]",
+      "meaning": "선택지 1~4의 내용을 차례로 입력받아 list로 만듭니다.",
+      "detail": "range(1,5)의 끝 5는 포함되지 않습니다. 빈 선택지는 같은 번호에서 다시 받습니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 157,
+      "code": "        answer = read_number(\"정답 번호: \", 1, 4)",
+      "meaning": "정답 번호를 정수 1~4로 입력받습니다.",
+      "detail": "내용에 적힌 숫자가 아니라 선택지의 번호입니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 158,
+      "code": "        hint = input(\"힌트(없으면 Enter): \").strip()",
+      "meaning": "선택 힌트를 입력받습니다. Enter만 누르면 빈 문자열로 저장합니다.",
+      "detail": "선택 힌트를 입력받습니다. Enter만 누르면 빈 문자열로 저장합니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 159,
+      "code": "        quiz = Quiz(question, choices, answer, hint)",
+      "meaning": "입력한 문제·선택지·정답·힌트로 새 Quiz 객체를 만듭니다.",
+      "detail": "입력한 문제·선택지·정답·힌트로 새 Quiz 객체를 만듭니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 160,
+      "code": "        self.quizzes.append(quiz)",
+      "meaning": "완성된 객체 한 개를 목록 맨 뒤에 추가합니다.",
+      "detail": "입력 중 Ctrl+C·EOF가 나면 이 줄까지 오지 않으므로 반쪽 문제가 추가되지 않습니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 161,
+      "code": "        print(\"퀴즈를 목록에 추가했습니다.\")",
+      "meaning": "메모리의 문제 목록에 추가됐음을 안내합니다.",
+      "detail": "파일 저장 성공 메시지와 분리되어 있습니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 162,
+      "code": "        if self.save():",
+      "meaning": "추가된 퀴즈가 포함된 전체 상태를 저장합니다.",
+      "detail": "save 결과가 True인지 확인합니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 163,
+      "code": "            print(\"추가한 퀴즈를 파일에도 저장했습니다.\")",
+      "meaning": "새 퀴즈의 파일 저장이 성공했다고 안내합니다.",
+      "detail": "프로그램 재실행 후에도 사용할 수 있도록 저장된 상태입니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 164,
+      "code": "        else:",
+      "meaning": "추가 후 파일 저장이 실패한 경우입니다.",
+      "detail": "메모리 목록에 추가한 사실까지 취소하는 코드는 아닙니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 165,
+      "code": "            print(\"파일 저장 실패: 추가한 퀴즈는 메모리에만 있습니다.\")",
+      "meaning": "추가한 문제는 메모리에만 있다고 알립니다.",
+      "detail": "저장 실패가 숨겨지지 않습니다.",
+      "scope": "QuizGame.add_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 166,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 167,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 168,
+      "code": "    def list_quizzes(self):",
+      "meaning": "함수 정의 · 문제 목록 확인",
+      "detail": "빈 목록을 처리하고, 등록된 문제 문장에 1부터 번호를 붙여 출력합니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.list_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 169,
+      "code": "        if not self.quizzes:",
+      "meaning": "목록이 비어 있는지 검사합니다.",
+      "detail": "play의 빈 목록 검사와 목적이 같습니다.",
+      "scope": "QuizGame.list_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 170,
+      "code": "            print(\"등록된 퀴즈가 없습니다.\")",
+      "meaning": "보여 줄 문제가 없다고 안내합니다.",
+      "detail": "빈 목록에서 enumerate 출력으로 바로 넘어가지 않습니다.",
+      "scope": "QuizGame.list_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 171,
+      "code": "            return",
+      "meaning": "목록 보기 메서드만 끝내 메뉴로 돌아갑니다.",
+      "detail": "프로그램은 계속 실행됩니다.",
+      "scope": "QuizGame.list_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 172,
+      "code": "        print(f\"등록된 퀴즈: {len(self.quizzes)}개\")",
+      "meaning": "등록된 문제 수를 출력합니다.",
+      "detail": "len(self.quizzes)는 현재 목록의 길이입니다.",
+      "scope": "QuizGame.list_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 173,
+      "code": "        for number, quiz in enumerate(self.quizzes, start=1):",
+      "meaning": "문제 객체에 표시 번호 1부터 붙여 꺼냅니다.",
+      "detail": "저장된 정답 번호나 문제 자체의 속성을 바꾸지 않습니다.",
+      "scope": "QuizGame.list_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 174,
+      "code": "            print(f\"{number}. {quiz.question}\")",
+      "meaning": "번호와 해당 문제 문장을 출력합니다.",
+      "detail": "quiz.question은 Quiz 객체의 속성입니다.",
+      "scope": "QuizGame.list_quizzes",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 175,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 176,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 177,
+      "code": "    def show_score(self):",
+      "meaning": "함수 정의 · 최고 정답 수와 힌트 차감 후 최고 점수",
+      "detail": "이전 형식의 best_score를 정답 개수로 유지하고 새 history의 points 최댓값을 별도로 표시합니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.show_score",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 178,
+      "code": "        if self.best_score is None:",
+      "meaning": "최고점이 아직 없는지 검사합니다.",
+      "detail": "is None으로 0과 미플레이를 구분합니다.",
+      "scope": "QuizGame.show_score",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 179,
+      "code": "            print(\"아직 퀴즈를 풀지 않았습니다.\")",
+      "meaning": "아직 완료한 판이 없음을 안내합니다.",
+      "detail": "실제로 0개를 맞힌 판과 다른 상태입니다.",
+      "scope": "QuizGame.show_score",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 180,
+      "code": "        else:",
+      "meaning": "한 번 이상 판을 마친 경우의 갈래입니다.",
+      "detail": "최고점이 0이어도 이쪽으로 갑니다.",
+      "scope": "QuizGame.show_score",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 181,
+      "code": "            print(f\"최고 정답 수: {self.best_score}개\")",
+      "meaning": "최고 정답 수를 출력합니다.",
+      "detail": "이 프로그램의 점수 단위는 백분율이 아닌 정답 개수입니다.",
+      "scope": "QuizGame.show_score",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 182,
+      "code": "        if self.history:",
+      "meaning": "기록 목록이 비어 있지 않을 때만 새 방식의 최고 점수를 계산합니다.",
+      "detail": "기록 목록이 비어 있지 않을 때만 새 방식의 최고 점수를 계산합니다.",
+      "scope": "QuizGame.show_score",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 183,
+      "code": "            print(f\"힌트 차감 후 최고 점수: {max(item['points'] for item in self.history)}점\")",
+      "meaning": "모든 완료 게임의 points 중 최댓값을 표시합니다. 옛 best_score와는 단위가 다릅니다.",
+      "detail": "모든 완료 게임의 points 중 최댓값을 표시합니다. 옛 best_score와는 단위가 다릅니다.",
+      "scope": "QuizGame.show_score",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 184,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 185,
+      "code": "    def delete_quiz(self):",
+      "meaning": "함수 정의 · 번호와 확인을 거쳐 퀴즈 삭제",
+      "detail": "빈 목록과 취소를 처리하고, 선택한 문제만 제거한 뒤 저장 성공 여부를 알립니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 186,
+      "code": "        if not self.quizzes:",
+      "meaning": "삭제할 문제가 없는지 확인합니다.",
+      "detail": "삭제할 문제가 없는지 확인합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 187,
+      "code": "            print(\"등록된 퀴즈가 없습니다.\")",
+      "meaning": "빈 문제 목록임을 안내합니다.",
+      "detail": "빈 문제 목록임을 안내합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 188,
+      "code": "            return",
+      "meaning": "삭제 메서드만 끝내 메뉴로 돌아갑니다.",
+      "detail": "삭제 메서드만 끝내 메뉴로 돌아갑니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 189,
+      "code": "        self.list_quizzes()",
+      "meaning": "번호를 고를 수 있도록 현재 문제 목록을 출력합니다.",
+      "detail": "번호를 고를 수 있도록 현재 문제 목록을 출력합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 190,
+      "code": "        number = read_number(\"삭제할 문제 번호(0 취소): \", 0, len(self.quizzes))",
+      "meaning": "삭제할 문제 번호를 검증해 받습니다. 0은 취소용 번호입니다.",
+      "detail": "삭제할 문제 번호를 검증해 받습니다. 0은 취소용 번호입니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 191,
+      "code": "        if number == 0:",
+      "meaning": "사용자가 0을 입력해 취소했는지 확인합니다.",
+      "detail": "사용자가 0을 입력해 취소했는지 확인합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 192,
+      "code": "            print(\"삭제를 취소했습니다.\")",
+      "meaning": "삭제 취소 메시지를 출력합니다.",
+      "detail": "삭제 취소 메시지를 출력합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 193,
+      "code": "            return",
+      "meaning": "목록을 변경하지 않고 삭제 메서드를 끝냅니다.",
+      "detail": "목록을 변경하지 않고 삭제 메서드를 끝냅니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 194,
+      "code": "        if input(\"정말 삭제할까요? (y/N): \").strip().lower() != \"y\":",
+      "meaning": "삭제 확인을 받고 y 이외의 입력이면 취소 분기로 갑니다. Y와 앞뒤 공백도 처리합니다.",
+      "detail": "삭제 확인을 받고 y 이외의 입력이면 취소 분기로 갑니다. Y와 앞뒤 공백도 처리합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 195,
+      "code": "            print(\"삭제를 취소했습니다.\")",
+      "meaning": "확인하지 않았으므로 삭제가 취소됐음을 알립니다.",
+      "detail": "확인하지 않았으므로 삭제가 취소됐음을 알립니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 196,
+      "code": "            return",
+      "meaning": "실제 삭제 전에 메서드를 끝내 원래 목록을 유지합니다.",
+      "detail": "실제 삭제 전에 메서드를 끝내 원래 목록을 유지합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 197,
+      "code": "        quiz = self.quizzes.pop(number - 1)",
+      "meaning": "선택한 문제를 목록에서 제거하고 제거한 객체를 quiz에 보관합니다.",
+      "detail": "사용자가 본 번호는 1부터, Python 목록 인덱스는 0부터 시작하므로 number - 1을 사용합니다. 과거 게임 기록은 그대로 남습니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 198,
+      "code": "        print(\"삭제:\", quiz.question)",
+      "meaning": "삭제한 문제 문장을 보여줍니다.",
+      "detail": "삭제한 문제 문장을 보여줍니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 199,
+      "code": "        if self.save():",
+      "meaning": "변경된 문제 목록과 기존 게임 기록을 파일에 저장하고 성공 여부를 확인합니다.",
+      "detail": "변경된 문제 목록과 기존 게임 기록을 파일에 저장하고 성공 여부를 확인합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 200,
+      "code": "            print(\"삭제한 결과를 파일에도 저장했습니다.\")",
+      "meaning": "삭제 결과가 파일에 저장됐다는 성공 메시지를 출력합니다.",
+      "detail": "삭제 결과가 파일에 저장됐다는 성공 메시지를 출력합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 201,
+      "code": "        else:",
+      "meaning": "저장이 실패했거나 보류된 경우를 처리합니다.",
+      "detail": "저장이 실패했거나 보류된 경우를 처리합니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 202,
+      "code": "            print(\"파일 저장 실패: 삭제는 메모리에만 반영됐습니다.\")",
+      "meaning": "메모리에서만 삭제됐고 파일에는 반영되지 않았음을 구분해 알립니다.",
+      "detail": "메모리에서만 삭제됐고 파일에는 반영되지 않았음을 구분해 알립니다.",
+      "scope": "QuizGame.delete_quiz",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 203,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 204,
+      "code": "    def show_history(self):",
+      "meaning": "함수 정의 · 완료한 모든 게임의 기록 표시",
+      "detail": "각 판의 시각·문제 수·정답 수·차감 후 점수·힌트 사용 수를 순서대로 출력합니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.show_history",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 205,
+      "code": "        if not self.history:",
+      "meaning": "완료한 게임 기록이 하나도 없는지 확인합니다.",
+      "detail": "완료한 게임 기록이 하나도 없는지 확인합니다.",
+      "scope": "QuizGame.show_history",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 206,
+      "code": "            print(\"아직 완료한 게임 기록이 없습니다.\")",
+      "meaning": "게임 기록이 없다는 안내를 출력합니다. 아래 반복문은 빈 목록이면 실행되지 않습니다.",
+      "detail": "게임 기록이 없다는 안내를 출력합니다. 아래 반복문은 빈 목록이면 실행되지 않습니다.",
+      "scope": "QuizGame.show_history",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 207,
+      "code": "        for number, item in enumerate(self.history, 1):",
+      "meaning": "모든 완료 게임 기록을 1부터 번호를 붙여 순회합니다.",
+      "detail": "모든 완료 게임 기록을 1부터 번호를 붙여 순회합니다.",
+      "scope": "QuizGame.show_history",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 208,
+      "code": "            print(f\"{number}. {item['played_at']} / {item['question_count']}문제 / \"",
+      "meaning": "기록 번호·날짜와 시간·문제 수를 출력하는 f 문자열의 앞부분입니다.",
+      "detail": "기록 번호·날짜와 시간·문제 수를 출력하는 f 문자열의 앞부분입니다.",
+      "scope": "QuizGame.show_history",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 209,
+      "code": "                  f\"정답 {item['correct']}개 / {item['points']}점 / 힌트 {item['hints_used']}회\")",
+      "meaning": "인접한 f 문자열을 이어 정답 수·점수·힌트 수까지 한 줄에 출력합니다.",
+      "detail": "인접한 f 문자열을 이어 정답 수·점수·힌트 수까지 한 줄에 출력합니다.",
+      "scope": "QuizGame.show_history",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 210,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 211,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 212,
+      "code": "    def save(self):",
+      "meaning": "함수 정의 · 문제·최고 정답 수·게임 기록 저장",
+      "detail": "Quiz를 dict로 변환하고 history를 함께 JSON 임시 파일에 완성한 다음 기존 파일과 교체합니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 213,
+      "code": "        if not self.can_save:",
+      "meaning": "현재 파일을 덮어써도 되는 상태인지 검사합니다.",
+      "detail": "load에서 읽기 실패·백업 실패가 나면 can_save는 False입니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 214,
+      "code": "            print(\"원본 보호를 위해 저장을 보류했습니다.\")",
+      "meaning": "원본 보호 때문에 저장을 하지 않는다고 알립니다.",
+      "detail": "정상 저장 완료 메시지가 아닙니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 215,
+      "code": "            return False",
+      "meaning": "저장 실패·보류를 False로 반환합니다.",
+      "detail": "호출자가 성공과 실패를 구분할 수 있습니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 216,
+      "code": "        payload = {\"quizzes\": [q.to_dict() for q in self.quizzes],",
+      "meaning": "각 Quiz를 dict로 바꾼 목록을 payload에 넣습니다.",
+      "detail": "목록 내포는 q.to_dict()를 문제마다 호출합니다. 아직 파일에 쓰지 않았습니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 217,
+      "code": "                   \"best_score\": self.best_score, \"history\": self.history}",
+      "meaning": "저장 payload에 기존 최고 정답 수와 전체 history를 함께 넣습니다.",
+      "detail": "저장 payload에 기존 최고 정답 수와 전체 history를 함께 넣습니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 218,
+      "code": "        temporary = STATE_PATH.with_suffix(\".json.tmp\")",
+      "meaning": "state.json.tmp라는 임시 경로를 만듭니다.",
+      "detail": "경로 객체만 만든 단계이며 아직 파일을 열지 않았습니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 219,
+      "code": "        try:",
+      "meaning": "파일 쓰기·교체의 접근 오류를 잡을 구간입니다.",
+      "detail": "OSError를 아래 except에서 처리합니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 220,
+      "code": "            with temporary.open(\"w\", encoding=\"utf-8\") as file:",
+      "meaning": "임시 파일을 UTF-8 쓰기 모드로 엽니다.",
+      "detail": "w는 기존 임시 파일이 있으면 덮어씁니다. with가 끝나면 파일을 닫습니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 221,
+      "code": "                json.dump(payload, file, ensure_ascii=False, indent=2)",
+      "meaning": "payload를 JSON 형식으로 파일에 씁니다.",
+      "detail": "ensure_ascii=False는 한글 표시, indent=2는 두 칸 들여쓰기입니다. UTF-8 인코딩 지정과는 별개입니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 222,
+      "code": "            temporary.replace(STATE_PATH)",
+      "meaning": "완성한 임시 파일로 실제 state.json을 교체합니다.",
+      "detail": "두 줄의 with 블록을 벗어나 파일이 닫힌 다음 실행합니다. 기존 데이터가 일부만 덮이는 위험을 줄입니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 223,
+      "code": "        except OSError as error:",
+      "meaning": "파일 열기·쓰기·교체 오류를 error 이름으로 받습니다.",
+      "detail": "as는 예외 객체에 지역 이름을 붙입니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 224,
+      "code": "            print(f\"저장하지 못했습니다: {error}\")",
+      "meaning": "실제 저장 오류의 내용을 안내합니다.",
+      "detail": "이 함수에서는 오류를 안내한 뒤 False로 결과를 전달합니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 225,
+      "code": "            return False",
+      "meaning": "파일 저장 실패를 False로 반환합니다.",
+      "detail": "이 줄이 실행되면 아래 성공 return에 도달하지 않습니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 226,
+      "code": "        return True",
+      "meaning": "저장이 완료됐음을 True로 반환합니다.",
+      "detail": "정상적으로 임시 파일을 쓰고 교체한 뒤에만 도달합니다.",
+      "scope": "QuizGame.save",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 227,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 228,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 229,
+      "code": "    def parse_state(self, data):",
+      "meaning": "함수 정의 · 이전 파일 호환과 새 게임 기록 검증",
+      "detail": "history가 없는 파일은 빈 기록으로 읽습니다. 기록 필드·시각·정수 범위와 점수 공식을 검사한 뒤 문제·최고점·기록을 반환합니다. 매개변수: self, data. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 230,
+      "code": "        if not isinstance(data, dict):",
+      "meaning": "전체 상태 데이터가 dict인지 검사합니다.",
+      "detail": "파일 문법이 맞아도 최상위가 list라면 이 프로그램의 스키마와 다릅니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 231,
+      "code": "            raise ValueError(\"전체 데이터는 객체여야 합니다.\")",
+      "meaning": "잘못된 최상위 구조를 예외로 알립니다.",
+      "detail": "이 검증은 load에서 손상 상태로 처리됩니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 232,
+      "code": "        if not isinstance(data.get(\"quizzes\"), list) or \"best_score\" not in data:",
+      "meaning": "quizzes가 list이며 best_score 키가 존재하는지 검사합니다.",
+      "detail": "get은 키가 없으면 기본 None을 반환합니다. 아직 게임의 속성을 바꾸지 않습니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 233,
+      "code": "            raise ValueError(\"quizzes 또는 best_score 구조가 잘못됐습니다.\")",
+      "meaning": "저장 필드 구조가 틀리면 예외를 냅니다.",
+      "detail": "불완전한 상태를 적용하지 않습니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 234,
+      "code": "        quizzes = [Quiz.from_dict(item) for item in data[\"quizzes\"]]",
+      "meaning": "저장된 문제마다 Quiz.from_dict를 호출해 객체 목록을 만듭니다.",
+      "detail": "중간 항목이 잘못되면 예외가 발생합니다. 검증 중인 지역변수라 기존 게임 상태는 유지됩니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 235,
+      "code": "        score = data[\"best_score\"]",
+      "meaning": "저장 데이터의 최고점을 지역변수로 읽습니다.",
+      "detail": "아직 self.best_score에 대입한 것이 아닙니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 236,
+      "code": "        if score is not None and (type(score) is not int or score < 0):",
+      "meaning": "최고점이 None 또는 0 이상 정수인지 검사합니다.",
+      "detail": "bool은 제외합니다. 현재 코드에는 문항 수와의 상한 비교는 없습니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 237,
+      "code": "            raise ValueError(\"최고 점수는 null 또는 0 이상 정수여야 합니다.\")",
+      "meaning": "잘못된 최고점 값을 예외로 알립니다.",
+      "detail": "예: 음수·문자열·True는 허용하지 않습니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 238,
+      "code": "        history = data.get(\"history\", [])",
+      "meaning": "history가 없는 이전 저장 파일에는 빈 목록을 적용해 호환합니다.",
+      "detail": "history가 없는 이전 저장 파일에는 빈 목록을 적용해 호환합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 239,
+      "code": "        if not isinstance(history, list):",
+      "meaning": "읽어온 history가 목록인지 검사합니다.",
+      "detail": "읽어온 history가 목록인지 검사합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 240,
+      "code": "            raise ValueError(\"history는 목록이어야 합니다.\")",
+      "meaning": "목록이 아니면 손상된 저장 구조로 판단해 ValueError를 알립니다.",
+      "detail": "목록이 아니면 손상된 저장 구조로 판단해 ValueError를 알립니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 241,
+      "code": "        for item in history:",
+      "meaning": "각 게임 기록을 하나씩 검증합니다.",
+      "detail": "각 게임 기록을 하나씩 검증합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 242,
+      "code": "            if not isinstance(item, dict):",
+      "meaning": "게임 기록 하나가 dict 객체인지 검사합니다.",
+      "detail": "게임 기록 하나가 dict 객체인지 검사합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 243,
+      "code": "                raise ValueError(\"게임 기록은 객체여야 합니다.\")",
+      "meaning": "dict가 아니면 이 상태 파일의 복원을 중단합니다.",
+      "detail": "dict가 아니면 이 상태 파일의 복원을 중단합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 244,
+      "code": "            try:",
+      "meaning": "게임 기록의 필드 조회와 시각 파싱 오류를 처리할 구간입니다.",
+      "detail": "게임 기록의 필드 조회와 시각 파싱 오류를 처리할 구간입니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 245,
+      "code": "                datetime.fromisoformat(item[\"played_at\"])",
+      "meaning": "played_at 문자열이 ISO 시각으로 파싱 가능한지 검사합니다. 여기서 현재 시각을 만들지는 않습니다.",
+      "detail": "played_at 문자열이 ISO 시각으로 파싱 가능한지 검사합니다. 여기서 현재 시각을 만들지는 않습니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 246,
+      "code": "                count, correct, points, hints = (item[key] for key in",
+      "meaning": "기록의 네 수치 필드를 생성기 표현식으로 꺼내 변수에 나누어 받기 시작합니다.",
+      "detail": "기록의 네 수치 필드를 생성기 표현식으로 꺼내 변수에 나누어 받기 시작합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 247,
+      "code": "                                                (\"question_count\", \"correct\", \"points\", \"hints_used\"))",
+      "meaning": "문제 수·정답 수·점수·힌트 수 키를 순서대로 지정합니다. 키가 없으면 KeyError가 발생합니다.",
+      "detail": "문제 수·정답 수·점수·힌트 수 키를 순서대로 지정합니다. 키가 없으면 KeyError가 발생합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 248,
+      "code": "            except (KeyError, TypeError, ValueError) as error:",
+      "meaning": "필드 누락·잘못된 타입·잘못된 시각 형식을 함께 처리합니다.",
+      "detail": "필드 누락·잘못된 타입·잘못된 시각 형식을 함께 처리합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 249,
+      "code": "                raise ValueError(\"게임 기록 필드가 잘못됐습니다.\") from error",
+      "meaning": "사용자가 이해할 수 있는 상태 오류로 바꾸되 원래 예외를 원인으로 연결합니다.",
+      "detail": "사용자가 이해할 수 있는 상태 오류로 바꾸되 원래 예외를 원인으로 연결합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 250,
+      "code": "            if (any(type(value) is not int for value in (count, correct, points, hints))",
+      "meaning": "네 수치가 실제 int인지 검사합니다. bool도 int의 하위 타입이지만 type 비교로 거부합니다.",
+      "detail": "네 수치가 실제 int인지 검사합니다. bool도 int의 하위 타입이지만 type 비교로 거부합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 251,
+      "code": "                    or count < 1 or not 0 <= correct <= count or not 0 <= hints <= count",
+      "meaning": "문제 수는 1 이상, 정답과 힌트 사용 수는 0~문제 수 사이인지 검사합니다.",
+      "detail": "문제 수는 1 이상, 정답과 힌트 사용 수는 0~문제 수 사이인지 검사합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 252,
+      "code": "                    or points != max(0, correct * 10 - hints * 3)):",
+      "meaning": "저장된 점수가 프로그램의 10점·3점·최소 0점 공식과 같은지 검사합니다.",
+      "detail": "저장된 점수가 프로그램의 10점·3점·최소 0점 공식과 같은지 검사합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 253,
+      "code": "                raise ValueError(\"게임 기록의 문제 수 또는 점수가 잘못됐습니다.\")",
+      "meaning": "숫자 범위나 점수 공식이 틀리면 손상 데이터로 알립니다.",
+      "detail": "숫자 범위나 점수 공식이 틀리면 손상 데이터로 알립니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 254,
+      "code": "        return quizzes, score, history",
+      "meaning": "검증이 끝난 문제 목록·최고 정답 수·기록 목록을 한 번에 반환합니다.",
+      "detail": "검증이 끝난 문제 목록·최고 정답 수·기록 목록을 한 번에 반환합니다.",
+      "scope": "QuizGame.parse_state",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 255,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 256,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 257,
+      "code": "    def load(self):",
+      "meaning": "함수 정의 · 문제·최고점·기록 로드와 손상 복구",
+      "detail": "검증된 상태만 적용하며 손상 파일은 백업합니다. 이전 파일에 없던 게임 기록을 임의로 만들어내지 않습니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 258,
+      "code": "        try:",
+      "meaning": "파일 읽기와 내용 검증에서 발생할 오류를 처리하기 시작합니다.",
+      "detail": "open·json.load·parse_state가 모두 같은 try 안에 있습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 259,
+      "code": "            with STATE_PATH.open(\"r\", encoding=\"utf-8\") as file:",
+      "meaning": "상태 파일을 UTF-8 읽기 모드로 엽니다.",
+      "detail": "r은 읽기 모드입니다. 파일이 없으면 FileNotFoundError입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 260,
+      "code": "                data = json.load(file)",
+      "meaning": "JSON 텍스트를 Python dict/list 등의 값으로 바꿉니다.",
+      "detail": "문법 손상은 JSONDecodeError, UTF-8 해석 실패는 UnicodeDecodeError가 날 수 있습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 261,
+      "code": "            quizzes, score, history = self.parse_state(data)",
+      "meaning": "읽은 JSON을 검증하고 문제·최고 정답 수·게임 기록 세 값으로 받습니다.",
+      "detail": "읽은 JSON을 검증하고 문제·최고 정답 수·게임 기록 세 값으로 받습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 262,
+      "code": "        except FileNotFoundError:",
+      "meaning": "상태 파일이 없는 첫 실행을 처리합니다.",
+      "detail": "일반 읽기 오류보다 구체적인 FileNotFoundError를 먼저 처리합니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 263,
+      "code": "            print(\"첫 실행: 기본 퀴즈를 사용합니다.\")",
+      "meaning": "기본 퀴즈로 시작한다고 안내합니다.",
+      "detail": "__init__에서 기본 목록을 이미 만들었습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 264,
+      "code": "            return",
+      "meaning": "load를 끝내 기본 상태를 유지합니다.",
+      "detail": "파일이 없다는 이유로 프로그램을 비정상 종료하지 않습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 265,
+      "code": "        except (json.JSONDecodeError, UnicodeDecodeError, ValueError) as error:",
+      "meaning": "JSON 문법·문자 인코딩·구조 검증 오류를 손상 상태로 처리합니다.",
+      "detail": "ValueError에는 Quiz 생성자와 parse_state의 검증 오류도 포함됩니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 266,
+      "code": "            print(f\"상태 파일 손상: {error}\")",
+      "meaning": "손상 원인을 출력합니다.",
+      "detail": "예외 객체를 f 문자열에 넣어 이유를 보여 줍니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 267,
+      "code": "            backup = STATE_PATH.with_name(",
+      "meaning": "원래 state.json과 같은 폴더에 백업 경로를 만듭니다.",
+      "detail": "괄호를 열어 다음 두 물리적 줄로 경로 표현식을 이어 씁니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 268,
+      "code": "                \"state.corrupt-\" + datetime.now().strftime(\"%Y%m%d-%H%M%S-%f\") + \".json\"",
+      "meaning": "현재 시각을 포함한 손상 원본 백업 이름을 만듭니다.",
+      "detail": "%Y%m%d는 날짜, %H%M%S는 시각, %f는 마이크로초입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 269,
+      "code": "            )",
+      "meaning": "with_name 호출의 괄호를 닫습니다.",
+      "detail": "이 줄은 독립적인 계산이 아니라 186행 표현식의 끝입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 270,
+      "code": "            try:",
+      "meaning": "백업 복사 자체의 파일 오류도 별도로 처리합니다.",
+      "detail": "바깥 손상 처리 안에 들어 있는 try입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 271,
+      "code": "                shutil.copy2(STATE_PATH, backup)",
+      "meaning": "손상 파일 원본을 백업 위치로 복사합니다.",
+      "detail": "원본 내용은 그대로 두고 사본을 만듭니다. copy2는 가능한 파일 메타데이터도 보존합니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 272,
+      "code": "                print(f\"손상 원본 백업: {backup.name}\")",
+      "meaning": "만든 백업의 파일 이름을 안내합니다.",
+      "detail": "backup.name은 전체 경로가 아닌 마지막 파일명 부분입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 273,
+      "code": "            except OSError as backup_error:",
+      "meaning": "백업 복사 중 파일 접근 오류가 발생한 경우입니다.",
+      "detail": "backup_error는 바깥 error와 구분한 이름입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 274,
+      "code": "                self.can_save = False",
+      "meaning": "이번 실행에서는 상태 파일을 덮어쓰지 않게 설정합니다.",
+      "detail": "백업 실패 시 원본이 사라지는 일을 막는 정책입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 275,
+      "code": "                print(f\"백업 실패: 원본을 덮어쓰지 않습니다. {backup_error}\")",
+      "meaning": "백업 실패와 원본 보호 조치를 안내합니다.",
+      "detail": "기본 퀴즈로 실행은 계속할 수 있지만 저장은 보류됩니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 276,
+      "code": "            print(\"이번 실행은 기본 퀴즈로 복구합니다.\")",
+      "meaning": "이번 실행은 기본 문제로 복구한다고 안내합니다.",
+      "detail": "기본 목록과 None 점수는 __init__에서 준비한 상태입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 277,
+      "code": "            return",
+      "meaning": "손상 파일 처리 후 load를 끝냅니다.",
+      "detail": "아래의 정상 상태 적용 코드에는 내려가지 않습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 278,
+      "code": "        except OSError as error:",
+      "meaning": "손상이 아닌 일반적인 파일 읽기 접근 오류를 처리합니다.",
+      "detail": "예: 파일 경로가 디렉터리이거나 읽기 권한이 없는 경우입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 279,
+      "code": "            self.can_save = False",
+      "meaning": "읽지 못한 원본에 새 상태를 덮지 않도록 저장을 보류합니다.",
+      "detail": "can_save는 이후 save가 검사하는 공유 속성입니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 280,
+      "code": "            print(f\"읽기 실패: 기본 퀴즈를 사용하고 저장은 보류합니다. {error}\")",
+      "meaning": "읽기 실패 이유와 기본 상태·저장 보류 정책을 안내합니다.",
+      "detail": "성공했다고 표시하지 않습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 281,
+      "code": "            return",
+      "meaning": "읽기 실패 처리 후 load를 끝냅니다.",
+      "detail": "다음 정상 적용 줄이 실행되지 않습니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 282,
+      "code": "        self.quizzes, self.best_score = quizzes, score",
+      "meaning": "모든 검증을 마친 목록과 최고점을 게임 상태로 적용합니다.",
+      "detail": "tuple을 두 속성으로 나눠 대입합니다. 오류 없이 try를 통과해야 도달합니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 283,
+      "code": "        self.history = history",
+      "meaning": "검증을 통과한 게임 기록을 현재 객체에 적용합니다.",
+      "detail": "검증을 통과한 게임 기록을 현재 객체에 적용합니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 284,
+      "code": "        print(\"저장된 데이터를 불러왔습니다.\")",
+      "meaning": "정상 데이터를 불러왔다고 안내합니다.",
+      "detail": "파일을 읽기만 한 것이 아니라 구조 검증까지 끝난 뒤 출력됩니다.",
+      "scope": "QuizGame.load",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 285,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "QuizGame",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 286,
+      "code": "    def run(self):",
+      "meaning": "함수 정의 · 삭제·게임 기록까지 연결한 7개 메뉴",
+      "detail": "1~7을 검증하고 각 기능을 호출합니다. 기존 종료 번호는 5이며 6은 삭제, 7은 기록 조회입니다. 매개변수: self. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 287,
+      "code": "        while True:",
+      "meaning": "메뉴를 계속 보여 주는 반복을 시작합니다.",
+      "detail": "선택한 기능이 끝나면 다시 이 반복으로 돌아옵니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 288,
+      "code": "            print(\"\\n1. 퀴즈 풀기 / 2. 추가 / 3. 목록 / 4. 점수 / 5. 종료 / 6. 삭제 / 7. 게임 기록\")",
+      "meaning": "기존 1~5 메뉴에 6번 삭제와 7번 게임 기록 조회를 함께 안내합니다.",
+      "detail": "기존 1~5 메뉴에 6번 삭제와 7번 게임 기록 조회를 함께 안내합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 289,
+      "code": "            choice = read_number(\"선택: \", 1, 7)",
+      "meaning": "확장된 메뉴 범위 1~7의 정수 선택을 받습니다.",
+      "detail": "확장된 메뉴 범위 1~7의 정수 선택을 받습니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 290,
+      "code": "            if choice == 5:",
+      "meaning": "종료 번호 5인지 검사합니다.",
+      "detail": "choice는 int이므로 문자열 \"5\"가 아닌 정수 5와 비교합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 291,
+      "code": "                print(\"종료합니다.\")",
+      "meaning": "종료 안내를 출력합니다.",
+      "detail": "저장 성공까지 뜻하는 메시지는 아닙니다. 저장은 main의 finally에서도 시도합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 292,
+      "code": "                return",
+      "meaning": "run을 끝내 main으로 돌아갑니다.",
+      "detail": "main은 이어 finally를 실행합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 293,
+      "code": "            elif choice == 1:",
+      "meaning": "번호가 1이면 퀴즈 풀기 갈래입니다.",
+      "detail": "위 종료 조건이 거짓인 경우에 검사합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 294,
+      "code": "                self.play()",
+      "meaning": "같은 게임 객체의 play를 실제로 호출합니다.",
+      "detail": "함수 정의와 메뉴가 연결되는 지점입니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 295,
+      "code": "            elif choice == 2:",
+      "meaning": "번호가 2이면 등록 갈래입니다.",
+      "detail": "입력값을 문자열과 비교하지 않습니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 296,
+      "code": "                self.add_quiz()",
+      "meaning": "퀴즈 등록 메서드를 호출합니다.",
+      "detail": "문제·선택지·정답을 받고 목록과 파일을 갱신합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 297,
+      "code": "            elif choice == 3:",
+      "meaning": "번호가 3이면 목록 갈래입니다.",
+      "detail": "등록 개수와 문장을 확인할 때 사용합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 298,
+      "code": "                self.list_quizzes()",
+      "meaning": "문제 목록 표시 메서드를 호출합니다.",
+      "detail": "호출이 끝나면 메뉴 반복이 계속됩니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 299,
+      "code": "            elif choice == 4:",
+      "meaning": "번호가 4이면 최고점 갈래입니다.",
+      "detail": "미플레이 상태도 show_score가 처리합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 300,
+      "code": "                self.show_score()",
+      "meaning": "최고 정답 수 표시 메서드를 호출합니다.",
+      "detail": "이 호출은 점수 자체를 바꾸지 않습니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 301,
+      "code": "            elif choice == 6:",
+      "meaning": "메뉴 6번을 선택한 경우인지 검사합니다.",
+      "detail": "메뉴 6번을 선택한 경우인지 검사합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 302,
+      "code": "                self.delete_quiz()",
+      "meaning": "번호·확인·저장을 포함한 퀴즈 삭제 기능을 호출합니다.",
+      "detail": "번호·확인·저장을 포함한 퀴즈 삭제 기능을 호출합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 303,
+      "code": "            elif choice == 7:",
+      "meaning": "메뉴 7번을 선택한 경우인지 검사합니다.",
+      "detail": "메뉴 7번을 선택한 경우인지 검사합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 304,
+      "code": "                self.show_history()",
+      "meaning": "완료한 게임 기록 전체를 출력하는 기능을 호출합니다.",
+      "detail": "완료한 게임 기록 전체를 출력하는 기능을 호출합니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": true
+    },
+    {
+      "number": 305,
+      "code": "            else:",
+      "meaning": "앞의 조건 어느 것도 맞지 않을 때의 갈래입니다.",
+      "detail": "현재 read_number가 1~5만 반환하고 위에서 모두 처리하므로 정상 입력에서는 도달하지 않는 남은 안내입니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 306,
+      "code": "                print(\"이 기능은 다음 단계에서 연결합니다.\")",
+      "meaning": "아직 연결하지 않은 기능이라는 남은 안내 문구입니다.",
+      "detail": "현재 완성된 1~5 메뉴에서는 정상적으로 실행되지 않습니다. 실제 기능이 미구현이라는 뜻으로 해석할 필요는 없습니다.",
+      "scope": "QuizGame.run",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 307,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 308,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 309,
+      "code": "def main():",
+      "meaning": "함수 정의 · 실행 시작과 종료 처리",
+      "detail": "게임을 준비하고 메뉴를 실행합니다. Ctrl+C·EOF를 안내하고 종료 시 가능한 저장을 다시 수행합니다. 매개변수: 없음. 정의만으로 본문이 실행되지는 않습니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 310,
+      "code": "    game = QuizGame()",
+      "meaning": "게임 객체를 만들어 초기화·기본 데이터·load를 실행합니다.",
+      "detail": "이 줄은 아래 try 밖입니다. 파일 오류는 load 자체가 처리하지만 초기화의 모든 오류를 main의 except가 잡는 것은 아닙니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 311,
+      "code": "    try:",
+      "meaning": "메뉴 실행 중 입력 중단을 처리할 구간을 시작합니다.",
+      "detail": "아래 game.run() 호출이 이 try의 대상입니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 312,
+      "code": "        game.run()",
+      "meaning": "메뉴 루프를 실제로 시작합니다.",
+      "detail": "사용자가 종료하거나 예외가 발생할 때까지 이 호출에서 진행됩니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 313,
+      "code": "    except (KeyboardInterrupt, EOFError):",
+      "meaning": "Ctrl+C와 입력 스트림 종료를 처리합니다.",
+      "detail": "KeyboardInterrupt는 Ctrl+C, EOFError는 input에서 더 읽을 입력이 없을 때 발생합니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 314,
+      "code": "        print(\"\\n입력이 종료되어 게임을 마칩니다.\")",
+      "meaning": "입력 종료를 안내합니다.",
+      "detail": "추적 오류를 그대로 보여 주는 대신 종료 이유를 설명합니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 315,
+      "code": "    finally:",
+      "meaning": "정상 종료·처리한 입력 중단 후 정리 동작을 시작합니다.",
+      "detail": "finally는 강제 프로세스 종료까지 보장하는 기능은 아닙니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 316,
+      "code": "        if game.save():",
+      "meaning": "종료 시 현재 상태를 저장하고 성공 여부를 확인합니다.",
+      "detail": "추가·완료한 판 뒤 이미 저장했더라도 여기서 다시 저장을 시도합니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 317,
+      "code": "            print(\"현재 데이터를 저장했습니다.\")",
+      "meaning": "종료 저장이 성공했다고 알립니다.",
+      "detail": "game.save()가 True를 돌려줬을 때만 나옵니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 318,
+      "code": "        else:",
+      "meaning": "종료 저장이 실패하거나 보류된 갈래입니다.",
+      "detail": "읽기·백업 실패로 can_save=False인 경우도 포함합니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 319,
+      "code": "            print(\"저장 실패 또는 보류: 이번 변경이 파일에 남지 않았을 수 있습니다.\")",
+      "meaning": "파일에 이번 변경이 남지 않았을 수 있다고 알립니다.",
+      "detail": "실패를 성공 메시지로 감추지 않습니다.",
+      "scope": "main",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 320,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 321,
+      "code": "",
+      "meaning": "구역을 나누는 빈 줄입니다.",
+      "detail": "실행 동작 없이 읽기 편하도록 구역을 나눕니다.",
+      "scope": "전역·구역 사이",
+      "blank": true,
+      "bonus": false
+    },
+    {
+      "number": 322,
+      "code": "if __name__ == \"__main__\":",
+      "meaning": "이 파일을 직접 실행한 경우인지 검사합니다.",
+      "detail": "python3 main.py이면 참, 다른 파일에서 import main이면 보통 거짓입니다.",
+      "scope": "전역·구역 사이",
+      "blank": false,
+      "bonus": false
+    },
+    {
+      "number": 323,
+      "code": "    main()",
+      "meaning": "main을 호출해 프로그램을 시작합니다.",
+      "detail": "위쪽 def는 함수 정의이고, 실제 메뉴 실행의 시작은 이 호출을 거쳐 이루어집니다.",
+      "scope": "전역·구역 사이",
+      "blank": false,
+      "bonus": false
+    }
+  ]
+}

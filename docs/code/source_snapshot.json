@@ -1,8 +1,10 @@
 {
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "source": "main.py",
-  "sha256": "5cde90446ae5f37c4832d7947a64c1863ddc08fd262fef8e808e3c393989bc04",
-  "lineCount": 237,
-  "annotatedRows": 237,
-  "nonblankRows": 195
+  "sha256": "2aa549e6181fc1c2bd35b725e6b496374848b8853f9748fb038863a3fb12daf7",
+  "lineCount": 323,
+  "annotatedRows": 323,
+  "nonblankRows": 279,
+  "bonusRows": 98,
+  "includesBonus": true
 }
